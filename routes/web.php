@@ -9,9 +9,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
 
 Route::get('login', function () {
     return view('Auth/login');
@@ -23,6 +20,14 @@ Route::get('register', function () {
 
 Route::get('forgot', function () {
     return view('Auth/forgot_password');
+});
+
+Route::get('profile', function () {
+    return view('profile');
+});
+
+Route::get('dashboard', function () {
+    return view('dashboard');
 });
 
 Route::resource('pasien', PasienController::class);

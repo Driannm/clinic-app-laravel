@@ -331,7 +331,7 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#"> <i class="bx bx-cog bx-md me-3"></i><span>Pengaturan</span> </a>
+                      <a class="dropdown-item" href="/profile"> <i class="bx bx-cog bx-md me-3"></i><span>Pengaturan</span> </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="#">

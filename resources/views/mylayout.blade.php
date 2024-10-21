@@ -326,12 +326,12 @@
                       <div class="dropdown-divider my-1"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="/profile">
                         <i class="bx bx-user bx-md me-3"></i><span>Profile Saya</span>
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/profile"> <i class="bx bx-cog bx-md me-3"></i><span>Pengaturan</span> </a>
+                      <a class="dropdown-item" href="#"> <i class="bx bx-cog bx-md me-3"></i><span>Pengaturan</span> </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="#">

@@ -13,7 +13,7 @@ class PasienController extends Controller
     {
         $data['title'] = 'Daftar Pasien';
         $data['pasien'] = \App\Models\Pasien::latest() -> paginate(10);
-        return view ('pasien_index', $data);
+        return view ('pasien.pasien_index', $data);
     }
 
     /**
@@ -22,7 +22,7 @@ class PasienController extends Controller
     public function create()
     {
         $data['title'] = 'Tambah Pasien';
-        return view ('pasien_create');
+        return view ('pasien.pasien_create');
     }
 
     /**

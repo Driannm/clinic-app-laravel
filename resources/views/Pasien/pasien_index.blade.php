@@ -18,24 +18,26 @@
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-              @foreach ($pasien as $item)
-              <tr>
-                  <td>{{ $loop->iteration }}</td>
-                  <td>{{ $item->no_pasien }}</td>
-                  <td>
-                      @if ($item->foto)
-                          <img src="{{ asset('Storage/' . $item->foto) }}" width="100px">
-                          {{-- <img src="{{ Storage::url($item->foto) }}" width="50"> --}}
-                      @endif
-                      {{-- {{ $item->nama }} --}}
-                  </td>
-                  <td>{{ $item->nama }}</td>
-                  <td>{{ $item->umur }}</td>
-                  <td>{{ $item->jenis_kelamin }}</td>
-                  <td>{{ $item->created_at }}</td>
-                  <td><b>Coming Soon!</td>
-              </tr>
-          @endforeach
+            @forelse ($pasien as $item)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->no_pasien }}</td>
+                <td>
+                    @if ($item->foto)
+                        <img src="{{ asset('Storage/' . $item->foto) }}" width="100px">
+                    @endif
+                </td>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->umur }}</td>
+                <td>{{ $item->jenis_kelamin }}</td>
+                <td>{{ $item->created_at }}</td>
+                <td><b>Coming Soon!</b></td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="8">Tidak Ada Data Pasien</td>
+            </tr>
+            @endforelse
           </tbody>
         </table>
       </div>

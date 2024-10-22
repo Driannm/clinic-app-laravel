@@ -45,7 +45,8 @@
               </td>
               <td>{{ $item->nama }}</td>
               <td>{{ $item->umur }}</td>
-              <td>{{ $item->jenis_kelamin }}</td>
+              {{-- <td>{{ $item->jenis_kelamin }}</td> --}}
+              <td>{{ ucfirst($item->jenis_kelamin) }}</td>
               <td>{{ $item->created_at }}</td>
               <td><b>Coming Soon!</b></td>
           </tr>

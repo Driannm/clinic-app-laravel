@@ -23,9 +23,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->no_pasien }}</td>
                 <td>
-                    @if ($item->foto)
-                        <img src="{{ asset('Storage/' . $item->foto) }}" width="100px">
-                    @endif
+                  <div class="showPhoto">
+                    <div id="imagePreview" style="@if ($item->foto != '') background-image:url('{{ url('/') }}/uploads/{{ $item->foto }}')
+                    @else background-image: url('{{ url('/storage/avatar.png') }}') @endif;">
+                    </div>
+                </div>
                 </td>
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->umur }}</td>
@@ -44,3 +46,22 @@
     </div>
 </div>
 @endsection	
+
+<style>
+  .showPhoto {
+      width: 50%;
+      height: 35px;
+      display: flex;
+      justify-content: flex-start; /* Foto akan ke kiri */
+      align-items: center;
+  }
+
+  .showPhoto > div {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+  }
+</style>

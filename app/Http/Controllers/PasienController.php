@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pasien;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
@@ -13,7 +14,7 @@ class PasienController extends Controller
     {
         $data['title'] = 'Daftar Pasien';
         $data['pasien'] = \App\Models\Pasien::latest() -> paginate(10);
-        return view ('pasien.pasien_index', $data);
+        return view ('pasien.index', $data);
     }
 
     /**
@@ -22,7 +23,7 @@ class PasienController extends Controller
     public function create()
     {
         $data['title'] = 'Tambah Pasien';
-        return view ('pasien.pasien_create');
+        return view ('pasien.create');
     }
 
     /**
@@ -39,13 +40,10 @@ class PasienController extends Controller
             'foto' => 'required|mimes:jpg,jpeg,png|max:5000',
         ]);
 
-        //dd($request->file('foto'));
         
         $filePath = public_path('uploads');
         $pasien = new \App\Models\Pasien();
         $pasien -> fill($requestData);
-        // $pasien->foto = str_replace('public/', '', $request->file('foto')->store('public'));
-        // $pasien -> foto = $request -> file('foto') -> store('public');
 
         
         if ($request->hasfile('foto')) {
@@ -74,7 +72,8 @@ class PasienController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['pasien'] = \App\Models\Pasien::findOrFail($id);
+        return view('pasien.edit', $data);
     }
 
     /**
@@ -82,7 +81,35 @@ class PasienController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $requestData = $request->validate([
+            'no_pasien' => 'required|unique:pasiens,no_pasien' . $id,
+            'nama' => 'required',
+            'umur' => 'required|numeric',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+            'foto' => 'nullable|mimes:jpg,jpeg,png|max:5000',
+            'alamat' => 'nullable',
+        ]);
+
+        $pasien = \App\Models\Pasien::findOrFail($id);
+        $pasien -> fill($requestData);
+
+        if ($request->hasfile('foto')) {
+            $filePath = public_path('uploads');
+            $file = $request->file('foto');
+            $file_name = time() . $file->getClientOriginalName();
+            $file->move($filePath, $file_name);
+            // delete old photo
+            if (!is_null($pasien->foto)) {
+                $oldImage = public_path('uploads/' . $pasien->foto);
+                if (Pasien::exists($oldImage)) {
+                    unlink($oldImage);
+                }
+            }
+            $pasien->foto = $file_name;
+        }
+        $pasien -> save();
+        flash('Berhasil, Data pasien telah terupdate!')->success();
+        return redirect()->route('pasien.index');
     }
 
     /**

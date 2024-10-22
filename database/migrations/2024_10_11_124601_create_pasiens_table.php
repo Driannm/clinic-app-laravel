@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no_pasien');
             $table->string('nama');
             $table->string('umur');
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('alamat') -> nullable();
             $table->timestamps();
         });

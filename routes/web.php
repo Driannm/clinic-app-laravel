@@ -30,8 +30,8 @@ Route::get('dashboard', function () {
     return view('dashboard');
 });
 
-Route::resource('pasien', PasienController::class);
 
+Route::resource('pasien', PasienController::class);
 
 Route::get('profil', [ProfileController::class, 'index']);
 Route::get('profil/create', [ProfileController::class, 'create'])->name('profil.create');

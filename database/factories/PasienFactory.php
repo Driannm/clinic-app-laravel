@@ -20,7 +20,7 @@ class PasienFactory extends Factory
             'no_pasien' => fake() -> unique() -> randomNumber(8),
             'nama' => fake() -> name(),
             'umur' => fake() -> numberBetween(20, 25),
-            'jenis_kelamin' => fake() -> randomElement(['laki-laki', 'perempuan']),
+            'jenis_kelamin' => fake() -> randomElement(['Laki-Laki', 'Perempuan']),
             'alamat' => fake() -> address(),
         ];
     }

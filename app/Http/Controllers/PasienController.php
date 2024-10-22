@@ -34,7 +34,7 @@ class PasienController extends Controller
             'no_pasien' => 'required|unique:pasiens,no_pasien',
             'nama' => 'required|min:3',
             'umur' => 'required|numeric',
-            'jenis_kelamin' => 'required|in:laki-laki,perempuan',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
             'alamat' => 'nullable',
             'foto' => 'required|mimes:jpg,jpeg,png|max:5000',
         ]);

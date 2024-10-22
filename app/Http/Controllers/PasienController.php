@@ -36,18 +36,28 @@ class PasienController extends Controller
             'umur' => 'required|numeric',
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
             'alamat' => 'nullable',
-            'foto' => 'required|image|mimes:jpg, jpeg, png|max:5000',
+            'foto' => 'required|mimes:jpg,jpeg,png|max:5000',
         ]);
 
         //dd($request->file('foto'));
-    
+        
+        $filePath = public_path('uploads');
         $pasien = new \App\Models\Pasien();
         $pasien -> fill($requestData);
-        //$pasien->foto = str_replace('public/', '', $request->file('foto')->store('public'));
-        $pasien -> foto = $request -> file('foto') -> store('public');
+        // $pasien->foto = str_replace('public/', '', $request->file('foto')->store('public'));
+        // $pasien -> foto = $request -> file('foto') -> store('public');
+
+        
+        if ($request->hasfile('foto')) {
+            $file = $request->file('foto');
+            $file_name = time() . $file->getClientOriginalName();
+ 
+            $file->move($filePath, $file_name);
+            $pasien->foto = $file_name;
+        }
+
         $pasien -> save();
-    
-        flash('Data sudah disimpan')->success();
+        flash('Berhasil, Data pasien telah tersimpan!')->success();
         return back();
     }
 

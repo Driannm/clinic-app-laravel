@@ -87,7 +87,7 @@
             <li class="menu-item {{ Request::is('pasien') ? 'active open' : '' }}">
               <a href="/pasien" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-user"></i>
-                  <div class="text-truncate" data-i18n="Pasien">Pasien</div>
+                  <div class="text-truncate" data-i18n="Pasien">Daftar Pasien</div>
               </a>
             </li>
             
@@ -269,18 +269,33 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <!-- Search -->
+
+              <!-- Breadcrumb -->
               <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search bx-md"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none ps-1 ps-sm-2"
-                    placeholder="Search..."
-                    aria-label="Search..." />
-                </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+            
+                        @if (Route::currentRouteName() == 'pasien.index' || Route::currentRouteName() == 'pasien.create')
+                            <li class="breadcrumb-item"><a href="{{ route('pasien.index') }}">Pasien</a></li>
+                        @elseif (Route::currentRouteName() == 'dokter.index')
+                            <li class="breadcrumb-item"><a href="{{ route('dokter.index') }}">Dokter</a></li>
+                        @elseif (Route::currentRouteName() == 'obat.index')
+                            <li class="breadcrumb-item"><a href="{{ route('obat.index') }}">Obat</a></li>
+                        @elseif (Route::currentRouteName() == 'janji-temu.index')
+                            <li class="breadcrumb-item"><a href="{{ route('janji-temu.index') }}">Janji Temu</a></li>
+                        @elseif (Route::currentRouteName() == 'keuangan.index')
+                            <li class="breadcrumb-item"><a href="{{ route('keuangan.index') }}">Keuangan</a></li>
+                        @endif
+                        
+                        <!-- Ini buat sub-breadcrumb-nya -->
+                        @if (isset($title))
+                            <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+                        @endif
+                    </ol>
+                </nav>
               </div>
-              <!-- /Search -->
+            
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
 

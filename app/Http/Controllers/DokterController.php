@@ -8,12 +8,15 @@ class DokterController extends Controller
 {
     public function index() 
     {
-        return "Halo, saya berada dihalaman dokter index";
+        $data['title'] = 'Daftar Dokter';
+        $data['dokter'] = \App\Models\Dokter::latest() -> paginate(10);
+        return view('Dokter.index', $data);
     }
 
     public function create() 
     {
-        return "Halo, saya berada dihalaman tambah data dokter";
+        $data['title'] = 'Tambah Dokter';
+        return view('Dokter.create');
     }
 
     public function edit($id) 

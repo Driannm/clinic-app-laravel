@@ -117,6 +117,8 @@ class PasienController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        \App\Models\Pasien::findOrFail($id);
+        flash('Data sudah berhasil dihapus!') -> success();
+        return back();
     }
 }

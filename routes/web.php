@@ -4,6 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
+use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Support\Facades\Auth;
+
+
+Route::middleware([Authenticate::class]) -> group(function () {
+    Route::resource('Pasien.index', PasienController::class);
+});
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,12 +42,8 @@ Route::get('dashboard', function () {
 
 
 Route::resource('pasien', PasienController::class);
+Route::resource('dokter', DokterController::class);
 
 Route::get('profil', [ProfileController::class, 'index']);
 Route::get('profil/create', [ProfileController::class, 'create'])->name('profil.create');
 Route::get('profil/{nama}/{id}/edit', [ProfileController::class, 'edit']);
-
-Route::get('dokter', [DokterController::class, 'index']);
-Route::get('dokter/{id}', [DokterController::class, 'show']);
-Route::get('dokter/create', [DokterController::class, 'create']);
-Route::get('dokter/{id}/edit', [DokterController::class, 'edit']);

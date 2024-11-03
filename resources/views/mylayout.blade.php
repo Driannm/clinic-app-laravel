@@ -115,16 +115,16 @@
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Dokter</span></li>
             
             {{-- Daftar Dokter --}}
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item {{ Request::is('dokter') ? 'active open' : '' }}">
+              <a href="/dokter" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div class="text-truncate" data-i18n="Basic">Daftar Dokter</div>
               </a>
             </li>
 
             {{-- Tambah Dokter --}}
-            <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+            <li class="menu-item {{ Request::is('dokter/create') ? 'active open' : '' }}">
+              <a href="/dokter/create" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-plus-circle"></i>
                 <div class="text-truncate" data-i18n="Basic">Tambah Dokter</div>
               </a>

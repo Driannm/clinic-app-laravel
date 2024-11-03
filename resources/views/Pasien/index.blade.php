@@ -44,14 +44,18 @@
               </div>
               </td>
               <td>{{ $item->nama }}</td>
-              <td>{{ $item->umur }}</td>
-              {{-- <td>{{ $item->jenis_kelamin }}</td> --}}
+              <td>{{ $item->umur }}</td>  
               <td>{{ ucfirst($item->jenis_kelamin) }}</td>
               <td>{{ $item->created_at }}</td>
               <td>
                 <a href="/pasien/{{ $item -> id }}/edit" class="btn btn-info mt-1">Edit</a>
                 <a href="/pasien/detail/{{ $item -> id }}" class="btn btn-primary mt-1">Detail</a>
-                <a href="/pasien/{{ $item -> id }}/edit" class="btn btn-danger mt-1">Hapus</a>
+                <form action="/pasien/{{ $item -> id }}" method="post" class="d-inline">
+                  @csrf
+                  @method('delete')
+                  <button class="btn btn-danger mt-1" onclick="return confirm('Yakin ingin hapus data?')"> Hapus
+                  </button>
+                </form>
               </td>
           </tr>
           @empty
@@ -61,6 +65,12 @@
           @endforelse
         </tbody>
       </table>
+      @if (session()->has('pesan'))
+        <div class="alert alert-info content-wrapper mt-1 mb-2" role="alert">
+          {{ session('pesan') }}
+        </div>
+      @endif
+      @include('flash::message')
     </div>
   </div>
 </div>

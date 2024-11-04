@@ -48,12 +48,12 @@
               <td>{{ ucfirst($item->jenis_kelamin) }}</td>
               <td>{{ $item->created_at }}</td>
               <td>
-                <a href="/pasien/{{ $item -> id }}/edit" class="btn btn-info mt-1">Edit</a>
-                <a href="/pasien/detail/{{ $item -> id }}" class="btn btn-primary mt-1">Detail</a>
+                <a href="/pasien/{{ $item -> id }}/edit" class="btn btn-sm btn-info mt-1">Edit</a>
+                <a href="/pasien/detail/{{ $item -> id }}" class="btn btn-sm btn-primary mt-1">Detail</a>
                 <form action="/pasien/{{ $item -> id }}" method="post" class="d-inline">
                   @csrf
                   @method('delete')
-                  <button class="btn btn-danger mt-1" onclick="return confirm('Yakin ingin hapus data?')"> Hapus
+                  <button class="btn btn-sm btn-danger mt-1" onclick="return confirm('Yakin ingin hapus data?')"> Hapus
                   </button>
                 </form>
               </td>

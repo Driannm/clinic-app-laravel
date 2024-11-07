@@ -1,4 +1,4 @@
-@extends('app', ['title' => 'Daftar Dokter'])
+@extends('mylayout', ['title' => 'Daftar Dokter'])
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="card">

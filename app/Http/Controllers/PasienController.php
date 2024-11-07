@@ -13,7 +13,7 @@ class PasienController extends Controller
     public function index()
     {
         $data['title'] = 'Daftar Pasien';
-        $data['pasien'] = \App\Models\Pasien::latest()->paginate(9);
+        $data['pasien'] = \App\Models\Pasien::latest()->paginate(6);
         return view('pasien.index', $data);
     }
 

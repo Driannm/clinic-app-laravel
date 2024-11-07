@@ -13,8 +13,8 @@ class PasienController extends Controller
     public function index()
     {
         $data['title'] = 'Daftar Pasien';
-        $data['pasien'] = \App\Models\Pasien::latest() -> paginate(9);
-        return view ('pasien.index', $data);
+        $data['pasien'] = \App\Models\Pasien::latest()->paginate(9);
+        return view('pasien.index', $data);
     }
 
     /**
@@ -23,7 +23,7 @@ class PasienController extends Controller
     public function create()
     {
         $data['title'] = 'Tambah Pasien';
-        return view ('pasien.create');
+        return view('pasien.create');
     }
 
     /**
@@ -40,21 +40,21 @@ class PasienController extends Controller
             'foto' => 'required|mimes:jpg,jpeg,png|max:5000',
         ]);
 
-        
+
         $filePath = public_path('uploads');
         $pasien = new \App\Models\Pasien();
-        $pasien -> fill($requestData);
+        $pasien->fill($requestData);
 
-        
+
         if ($request->hasfile('foto')) {
             $file = $request->file('foto');
             $file_name = time() . $file->getClientOriginalName();
- 
+
             $file->move($filePath, $file_name);
             $pasien->foto = $file_name;
         }
 
-        $pasien -> save();
+        $pasien->save();
         flash('Berhasil, Data pasien telah tersimpan!')->success();
         return back();
     }
@@ -64,7 +64,8 @@ class PasienController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data['pasien'] = \App\Models\Pasien::findOrFail($id);
+        return view('pasien.edit', $data);
     }
 
     /**
@@ -72,8 +73,6 @@ class PasienController extends Controller
      */
     public function edit(string $id)
     {
-        $data['pasien'] = \App\Models\Pasien::findOrFail($id);
-        return view('pasien.edit', $data);
     }
 
     /**
@@ -82,7 +81,7 @@ class PasienController extends Controller
     public function update(Request $request, string $id)
     {
         $requestData = $request->validate([
-            'no_pasien' => 'required|unique:pasiens,no_pasien' . $id,
+            'no_pasien' => 'required|unique:pasiens,no_pasien,' . $id,
             'nama' => 'required',
             'umur' => 'required|numeric',
             'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
@@ -91,7 +90,7 @@ class PasienController extends Controller
         ]);
 
         $pasien = \App\Models\Pasien::findOrFail($id);
-        $pasien -> fill($requestData);
+        $pasien->fill($requestData);
 
         if ($request->hasfile('foto')) {
             $filePath = public_path('uploads');
@@ -107,7 +106,7 @@ class PasienController extends Controller
             }
             $pasien->foto = $file_name;
         }
-        $pasien -> save();
+        $pasien->save();
         flash('Berhasil, Data pasien telah terupdate!')->success();
         return redirect()->route('pasien.index');
     }
@@ -117,8 +116,24 @@ class PasienController extends Controller
      */
     public function destroy(string $id)
     {
-        \App\Models\Pasien::findOrFail($id);
-        flash('Data sudah berhasil dihapus!') -> success();
-        return back();
+        // Temukan pasien berdasarkan ID atau gagal jika tidak ditemukan
+        $pasien = \App\Models\Pasien::findOrFail($id);
+
+        // Hapus foto jika ada
+        if (!is_null($pasien->foto)) {
+            $oldImage = public_path('uploads/' . $pasien->foto);
+            if (file_exists($oldImage)) {
+                unlink($oldImage);
+            }
+        }
+
+        // Hapus data pasien
+        $pasien->delete();
+
+        // Menampilkan pesan sukses
+        flash('Berhasil, Data pasien telah dihapus!')->success();
+
+        // Redirect ke halaman pasien
+        return redirect('/pasien');
     }
 }

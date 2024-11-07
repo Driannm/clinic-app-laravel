@@ -48,7 +48,7 @@
               <td>{{ ucfirst($item->jenis_kelamin) }}</td>
               <td>{{ $item->created_at }}</td>
               <td>
-                <a href="/pasien/{{ $item -> id }}/edit" class="btn btn-sm btn-info mt-1">Edit</a>
+                <a href="/pasien/{{ $item -> id }}" class="btn btn-sm btn-info mt-1">Edit</a>
                 <a href="/pasien/detail/{{ $item -> id }}" class="btn btn-sm btn-primary mt-1">Detail</a>
                 <form action="/pasien/{{ $item -> id }}" method="post" class="d-inline">
                   @csrf
@@ -70,7 +70,7 @@
           {{ session('pesan') }}
         </div>
       @endif
-      @include('flash::message')
+      {{-- @include('flash::message') --}}
     </div>
   </div>
 </div>

@@ -55,7 +55,7 @@ class PasienController extends Controller
         }
 
         $pasien->save();
-        flash('Berhasil, Data pasien telah tersimpan!')->success();
+        flash('Berhasil, Data ' . $pasien->nama . ' Telah Tersimpan!')->success();
         return redirect('/pasien');
     }
 
@@ -71,7 +71,9 @@ class PasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) {}
+    public function edit(string $id) {
+        
+    }
 
     /**
      * Update the specified resource in storage.
@@ -110,7 +112,7 @@ class PasienController extends Controller
 
         $pasien->save();
 
-        flash('Berhasil, Data Pasien Telah Diupdate!')->success();
+        flash('Berhasil, Data ' . $pasien->nama . ' Telah Diupdate!')->info();
         return redirect()->route('pasien.index');
     }
 
@@ -135,7 +137,7 @@ class PasienController extends Controller
         $pasien->delete();
 
         // Menampilkan pesan sukses
-        flash('Berhasil, Data pasien telah dihapus!')->success();
+        flash('Berhasil, Data ' . $pasien->nama . ' Telah Dihapus!')->error();
 
         // Redirect ke halaman pasien
         return redirect('/pasien');

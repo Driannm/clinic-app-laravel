@@ -68,11 +68,13 @@
                                 </div>
                             </div>
 
+                            <a href="/pasien" class="btn btn-primary mt-1 mb-2">Kembali</a>
                             <button type="submit" class="btn btn-success mt-1 mb-2">Simpan</button>
-
-                            @if (session()->has('pesan'))
-                                <div class="alert alert-info content-wrapper mt-1 mb-2" role="alert">
-                                    {{ session('pesan') }}
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
                             @endif
                             @include('flash::message')

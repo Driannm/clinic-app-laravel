@@ -56,7 +56,7 @@ class PasienController extends Controller
 
         $pasien->save();
         flash('Berhasil, Data pasien telah tersimpan!')->success();
-        return back();
+        return redirect('/pasien');
     }
 
     /**
@@ -71,9 +71,7 @@ class PasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-    }
+    public function edit(string $id) {}
 
     /**
      * Update the specified resource in storage.
@@ -92,24 +90,30 @@ class PasienController extends Controller
         $pasien = \App\Models\Pasien::findOrFail($id);
         $pasien->fill($requestData);
 
+        // Jika ada file foto yang diupload
         if ($request->hasfile('foto')) {
             $filePath = public_path('uploads');
             $file = $request->file('foto');
             $file_name = time() . $file->getClientOriginalName();
             $file->move($filePath, $file_name);
-            // delete old photo
+
+            // Hapus foto lama jika ada
             if (!is_null($pasien->foto)) {
                 $oldImage = public_path('uploads/' . $pasien->foto);
-                if (Pasien::exists($oldImage)) {
+                if (file_exists($oldImage)) { 
                     unlink($oldImage);
                 }
             }
+
             $pasien->foto = $file_name;
         }
+
         $pasien->save();
-        flash('Berhasil, Data pasien telah terupdate!')->success();
+
+        flash('Berhasil, Data Pasien Telah Diupdate!')->success();
         return redirect()->route('pasien.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

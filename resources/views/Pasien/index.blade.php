@@ -19,6 +19,13 @@
                         <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
                     </div>
                 </div>
+                @if (session('success'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            {{ session('success') }}
+                            <button type="button" id="session-close-btn" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @include('flash::message')
                 <div class="table-responsive text-nowrap">
                     <table class="table table-hover">
                         <thead>
@@ -52,7 +59,7 @@
                                     <td>{{ $item->created_at }}</td>
                                     <td>
                                         <a href="/pasien/{{ $item->id }}" class="btn btn-sm btn-info mt-1">Edit</a>
-                                        <a href="/pasien/detail/{{ $item->id }}"
+                                        <a href="/pasien/{{ $item->id }}"
                                             class="btn btn-sm btn-primary mt-1">Detail</a>
                                         <form action="/pasien/{{ $item->id }}" method="post" class="d-inline">
                                             @csrf
@@ -70,12 +77,6 @@
                             @endforelse
                         </tbody>
                     </table>
-                    @if (session()->has('pesan'))
-                        <div class="alert alert-info content-wrapper mt-1 mb-2" role="alert">
-                            {{ session('pesan') }}
-                        </div>
-                    @endif
-                    {{-- @include('flash::message') --}}
                 </div>
             </div>
         </div>

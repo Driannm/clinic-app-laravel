@@ -91,13 +91,13 @@
               </a>
             </li>
             
-            {{-- Tambah Pasien --}}
+            {{-- Tambah Pasien
             <li class="menu-item {{ Request::is('pasien/create') ? 'active open' : '' }}">
               <a href="/pasien/create" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-plus-circle"></i>
                   <div class="text-truncate" data-i18n="Pasien">Tambah Pasien</div>
               </a>
-            </li>
+            </li> --}}
 
             {{-- Riwayat Medis --}}
             <li class="menu-item">

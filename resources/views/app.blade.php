@@ -86,13 +86,13 @@
                         </a>
                     </li>
 
-                    {{-- Tambah Pasien
-            <li class="menu-item {{ Request::is('pasien/create') ? 'active open' : '' }}">
-              <a href="/pasien/create" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-plus-circle"></i>
-                  <div class="text-truncate" data-i18n="Pasien">Tambah Pasien</div>
-              </a>
-            </li> --}}
+                    {{-- Pendaftaran Pasien --}}
+                    <li class="menu-item {{ Request::is('daftar') ? 'active open' : '' }}">
+                        <a href="/daftar" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-clipboard"></i>
+                            <div class="text-truncate" data-i18n="Pasien">Pendaftaran Pasien</div>
+                        </a>
+                    </li>
 
                     {{-- Riwayat Medis --}}
                     <li class="menu-item">

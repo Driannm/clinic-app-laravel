@@ -71,9 +71,7 @@ class PasienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) {
-        
-    }
+    public function edit(string $id) {}
 
     /**
      * Update the specified resource in storage.
@@ -102,7 +100,7 @@ class PasienController extends Controller
             // Hapus foto lama jika ada
             if (!is_null($pasien->foto)) {
                 $oldImage = public_path('uploads/' . $pasien->foto);
-                if (file_exists($oldImage)) { 
+                if (file_exists($oldImage)) {
                     unlink($oldImage);
                 }
             }
@@ -125,6 +123,11 @@ class PasienController extends Controller
         // Temukan pasien berdasarkan ID atau gagal jika tidak ditemukan
         $pasien = \App\Models\Pasien::findOrFail($id);
 
+        if ($pasien->daftar->count() > 0) {
+            flash('Gagal, Data ' . $pasien->nama . ' Tidak Dapat Dihapus, Karena Sudah Ada Data Pendaftaran')->error();
+            return redirect('/pasien');
+        }
+
         // Hapus foto jika ada
         if (!is_null($pasien->foto)) {
             $oldImage = public_path('uploads/' . $pasien->foto);
@@ -133,13 +136,8 @@ class PasienController extends Controller
             }
         }
 
-        // Hapus data pasien
         $pasien->delete();
-
-        // Menampilkan pesan sukses
         flash('Berhasil, Data ' . $pasien->nama . ' Telah Dihapus!')->error();
-
-        // Redirect ke halaman pasien
         return redirect('/pasien');
     }
 }

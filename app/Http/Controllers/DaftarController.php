@@ -12,7 +12,8 @@ class DaftarController extends Controller
      */
     public function index()
     {
-        //
+        $daftar = \App\Models\Daftar::with('Pasien')->latest()->paginate(6);
+        return view('daftar.index', compact('daftar'));
     }
 
     /**

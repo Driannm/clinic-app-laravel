@@ -51,3 +51,7 @@ Route::get('dashboard', function () {
 Route::get('profil', [ProfileController::class, 'index']);
 Route::get('profil/create', [ProfileController::class, 'create'])->name('profil.create');
 Route::get('profil/{nama}/{id}/edit', [ProfileController::class, 'edit']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -217,7 +217,7 @@
             </li>
 
             {{-- Keuangan --}}
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">Keuangan</span></li>
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Laporan</span></li>
 
             {{-- Pembayaran --}}
             <li class="menu-item">
@@ -275,26 +275,27 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-            
-                        @if (Route::currentRouteName() == 'pasien.index' || Route::currentRouteName() == 'pasien.create')
+
+                        <!-- Breadcrumb utama -->
+                        @if (Route::is('pasien.index', 'pasien.create'))
                             <li class="breadcrumb-item"><a href="{{ route('pasien.index') }}">Pasien</a></li>
-                        @elseif (Route::currentRouteName() == 'dokter.index')
+                        @elseif (Route::is('dokter.index', 'dokter.create'))
                             <li class="breadcrumb-item"><a href="{{ route('dokter.index') }}">Dokter</a></li>
-                        @elseif (Route::currentRouteName() == 'obat.index')
+                        @elseif (Route::is('obat.index'))
                             <li class="breadcrumb-item"><a href="{{ route('obat.index') }}">Obat</a></li>
-                        @elseif (Route::currentRouteName() == 'janji-temu.index')
+                        @elseif (Route::is('janji-temu.index'))
                             <li class="breadcrumb-item"><a href="{{ route('janji-temu.index') }}">Janji Temu</a></li>
-                        @elseif (Route::currentRouteName() == 'keuangan.index')
+                        @elseif (Route::is('keuangan.index'))
                             <li class="breadcrumb-item"><a href="{{ route('keuangan.index') }}">Keuangan</a></li>
                         @endif
-                        
-                        <!-- Ini buat sub-breadcrumb-nya -->
+
+                        <!-- Sub-breadcrumb -->
                         @if (isset($title))
                             <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
                         @endif
                     </ol>
                 </nav>
-              </div>
+</div>
             
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -340,9 +341,11 @@
                       <div class="dropdown-divider my-1"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="javascript:void(0);">
-                        <i class="bx bx-power-off bx-md me-3"></i><span>Keluar</span>
-                      </a>
+                      <form action="{{ route('logout') }}" method="POST">
+                        <a class="dropdown-item">
+                          <i class="bx bx-power-off bx-md me-3"></i><span>Keluar</span>
+                        </a>
+                      </form>
                     </li>
                   </ul>
                 </li>

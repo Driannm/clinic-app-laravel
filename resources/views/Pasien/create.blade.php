@@ -1,4 +1,4 @@
-@extends('mylayout', ['title' => 'Tambah Pasien'])
+@extends('app', ['title' => 'Tambah Pasien'])
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <!-- Custom file input -->

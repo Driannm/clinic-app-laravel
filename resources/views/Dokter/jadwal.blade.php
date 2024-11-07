@@ -13,7 +13,8 @@
                   type="text"
                   class="form-control border-0 shadow-none ps-1 ps-sm-2"
                   placeholder="Search..."
-                  aria-label="Search..."/>
+                  aria-label="Search..."
+                  onkeyup="searchDokter()" />
           </div>
       </div>
     </div>
@@ -54,11 +55,7 @@
               <td>
                 <a href="/pasien/{{ $item -> id }}/edit" class="btn btn-sm btn-info mt-1">Edit</a>
                 <a href="/pasien/detail/{{ $item -> id }}" class="btn btn-sm btn-primary mt-1">Detail</a>
-                <form action="/dokter/{{ $item -> id }}" method="post" class="d-inline">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-sm btn-danger mt-1" onclick="return confirm('Yakin ingin hapus data?')"> Hapus </button>
-                </form>
+                <a href="/pasien/{{ $item -> id }}/edit" class="btn btn-sm btn-danger mt-1">Hapus</a>
               </td>
           </tr>
           @empty
@@ -73,6 +70,7 @@
     </div>
   </div>
 </div>
+
 @endsection	
 
 <style>
@@ -93,3 +91,57 @@
       background-position: center;
   }
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function searchDokter() {
+        const query = $('#search').val(); // Ambil nilai input search
+
+        $.ajax({
+            url: '/search-dokter',
+            type: 'GET',
+            data: { query: query },
+            success: function(response) {
+                // Kosongkan tabel sebelum menampilkan hasil
+                $('#table-body').html('');
+
+                // Cek apakah ada hasil
+                if (response.length > 0) {
+                    response.forEach((item, index) => {
+                        $('#table-body').append(`
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${item.no_dokter}</td>
+                                <td>
+                                    <div class="showPhoto">
+                                        <div id="imagePreview" style="background-image: url('${item.foto ? '/uploads/' + item.foto : '/storage/avatar.png'}');"></div>
+                                    </div>
+                                </td>
+                                <td>${item.nama}</td>
+                                <td>${item.umur}</td>
+                                <td>${item.jenis_kelamin.charAt(0).toUpperCase() + item.jenis_kelamin.slice(1)}</td>
+                                <td>${item.kategori}</td>
+                                <td>${item.keahlian}</td>
+                                <td>
+                                    <a href="/pasien/${item.id}/edit" class="btn btn-sm btn-info mt-1">Edit</a>
+                                    <a href="/pasien/detail/${item.id}" class="btn btn-sm btn-primary mt-1">Detail</a>
+                                    <a href="/pasien/${item.id}/delete" class="btn btn-sm btn-danger mt-1">Hapus</a>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                } else {
+                    $('#table-body').append(`
+                        <tr>
+                            <td colspan="8">Tidak Ada Data Dokter</td>
+                        </tr>
+                    `);
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+</script>

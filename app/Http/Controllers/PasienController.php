@@ -137,7 +137,7 @@ class PasienController extends Controller
         }
 
         $pasien->delete();
-        flash('Berhasil, Data ' . $pasien->nama . ' Telah Dihapus!')->error();
+        flash('Berhasil, Data ' . $pasien->nama . ' Telah Dihapus!')->warning();
         return redirect('/pasien');
     }
 }

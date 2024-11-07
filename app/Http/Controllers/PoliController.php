@@ -58,8 +58,17 @@ class PoliController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Poli $poli)
+    public function destroy(string $id)
     {
-        //
+        $poli = \App\Models\Poli::findOrFail($id);
+
+        if ($poli->daftar->count() > 0) {
+            flash('Gagal, Tidak Dapat Menghapus ' . $poli->nama . ' Karena Poli Masih Aktif')->error();
+            return redirect('/daftar');
+        }
+
+        $poli->delete();
+        flash('Berhasil, ' . $poli->nama . ' Dinonaktifkan Dan Telah Dihapus!')->warning();
+        return redirect('/daftar');
     }
 }

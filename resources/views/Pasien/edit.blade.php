@@ -15,6 +15,7 @@
                                 <label for="nama" class="form-label">Foto Pasien (jpg, jpeg, png)</label>
                                 <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto"
                                     name="foto" value="{{ old('foto') }}">
+                                    <img src='{{ url('/') }}/uploads/{{ $pasien->foto }}' alt="Foto Pasien" class="img-thumbnail mt-2" style="width: 100px">
                                 <span class="text-danger">{{ $errors->first('foto') }}</span>
                             </div>
 

@@ -170,34 +170,34 @@
 
 
                     {{-- Obat --}}
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Obat</span></li>
+                    {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Obat</span></li> --}}
 
                     {{-- Daftar Obat --}}
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
                             target="_blank" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-capsule"></i>
                             <div class="text-truncate" data-i18n="Support">Daftar Obat</div>
                         </a>
-                    </li>
+                    </li> --}}
 
                     {{-- Tambah Obat --}}
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
                             target="_blank" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-plus-circle"></i>
                             <div class="text-truncate" data-i18n="Documentation">Tambah Obat</div>
                         </a>
-                    </li>
+                    </li> --}}
 
                     {{-- Stok Obat --}}
-                    <li class="menu-item">
+                    {{-- <li class="menu-item">
                         <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
                             target="_blank" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-box"></i>
                             <div class="text-truncate" data-i18n="Documentation">Stok Obat</div>
                         </a>
-                    </li>
+                    </li> --}}
 
                     {{-- Keuangan --}}
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Laporan</span></li>
@@ -206,8 +206,8 @@
                     <li class="menu-item">
                         <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
                             target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-wallet"></i>
-                            <div class="text-truncate" data-i18n="Documentation">Pembayaran</div>
+                            <i class="menu-icon tf-icons bx bxs-user-rectangle"></i>
+                            <div class="text-truncate" data-i18n="Documentation">Pasien</div>
                         </a>
                     </li>
 
@@ -215,8 +215,8 @@
                     <li class="menu-item">
                         <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
                             target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-receipt"></i>
-                            <div class="text-truncate" data-i18n="Documentation">Tagihan</div>
+                            <i class="menu-icon tf-icons bx bxs-report"></i>
+                            <div class="text-truncate" data-i18n="Documentation">Pendaftaran Pasien</div>
                         </a>
                     </li>
 
@@ -224,7 +224,7 @@
                     <li class="menu-item">
                         <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
                             target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-file"></i>
+                            <i class="menu-icon tf-icons bx bxs-file"></i>
                             <div class="text-truncate" data-i18n="Documentation">Laporan Keuangan</div>
                         </a>
                     </li>
@@ -253,20 +253,32 @@
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
 
                                     <!-- Breadcrumb utama -->
-                                    @if (Route::is('pasien.index', 'pasien.create'))
+                                    {{-- Pasien --}}
+                                    @if (Route::is('pasien.index', 'pasien.create', 'pasien.show',
+                                                    'daftar.index','daftar.create','daftar.edit'))
                                         <li class="breadcrumb-item"><a href="{{ route('pasien.index') }}">Pasien</a>
                                         </li>
+                                        
+                                    {{-- Dokter --}}
                                     @elseif (Route::is('dokter.index', 'dokter.create'))
                                         <li class="breadcrumb-item"><a href="{{ route('dokter.index') }}">Dokter</a>
                                         </li>
+
+                                    {{-- Obat --}}
                                     @elseif (Route::is('obat.index'))
-                                        <li class="breadcrumb-item"><a href="{{ route('obat.index') }}">Obat</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('obat.index') }}">Obat</a>
+                                        </li>
+                                    
+                                    {{-- Janji Temu --}}
                                     @elseif (Route::is('janji-temu.index'))
-                                        <li class="breadcrumb-item"><a href="{{ route('janji-temu.index') }}">Janji
-                                                Temu</a></li>
-                                    @elseif (Route::is('keuangan.index'))
+                                        <li class="breadcrumb-item"><a href="{{ route('janji-temu.index') }}">Janji Temu</a>
+                                        </li>
+
+                                    {{-- Laporan --}}
+                                    @elseif (Route::is('laporan.index'))
                                         <li class="breadcrumb-item"><a
-                                                href="{{ route('keuangan.index') }}">Keuangan</a></li>
+                                                href="{{ route('laporan.index') }}">Laporan</a>
+                                        </li>
                                     @endif
 
                                     <!-- Sub-breadcrumb -->

@@ -1,4 +1,4 @@
-@extends('app', ['title' => 'Pendaftaran Pasien'])
+@extends('app', ['title' => 'Data Pendaftaran Pasien'])
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
@@ -50,7 +50,14 @@
                                     <td>{{ $item->poli->nama }}</td>
                                     <td>{{ $item->keluhan }}</td>
                                     <td>
-
+                                        <a href="/pasien/{{ $item->id }}" class="btn btn-sm btn-info mt-1">Detail</a>
+                                        <form action="/pasien/{{ $item->id }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-sm btn-danger mt-1"
+                                                onclick="return confirm('Yakin ingin hapus data?')"> Hapus
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty

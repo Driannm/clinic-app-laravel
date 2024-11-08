@@ -13,6 +13,8 @@ Route::middleware([Authenticate::class]) -> group(function () {
     Route::resource('daftar', DaftarController::class);
 });
 
+Route::post('/daftar/create', [DaftarController::class, 'store'])->name('daftar.store');
+
 Route::get('/', function () {
     return view('welcome');
 });

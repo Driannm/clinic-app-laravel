@@ -41,7 +41,7 @@ class DaftarController extends Controller
         $daftar = new \App\Models\Daftar();
         $daftar -> fill($requestData);
         $daftar -> save();
-        flash('Berhasil, Data Pendaftaran Pasien Tersimpan!')->success();
+        flash('Berhasil, Data Pendaftaran Pasien Disimpan!')->success();
         return redirect('/daftar');
     }
 
@@ -74,6 +74,8 @@ class DaftarController extends Controller
      */
     public function destroy(Daftar $daftar)
     {
-        //
+        $daftar->delete();
+        flash('Berhasil, Data Pendaftaran Pasien Dihapus!')->warning();
+        return back();
     }
 }

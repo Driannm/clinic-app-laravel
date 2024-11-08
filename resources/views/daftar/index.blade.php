@@ -50,8 +50,8 @@
                                     <td>{{ $item->poli->nama }}</td>
                                     <td>{{ $item->keluhan }}</td>
                                     <td>
-                                        <a href="/pasien/{{ $item->id }}" class="btn btn-sm btn-info mt-1">Detail</a>
-                                        <form action="/pasien/{{ $item->id }}" method="post" class="d-inline">
+                                        <a href="/daftar/{{ $item->id }}" class="btn btn-sm btn-info mt-1">Detail</a>
+                                        <form action="/daftar/{{ $item->id }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-sm btn-danger mt-1"

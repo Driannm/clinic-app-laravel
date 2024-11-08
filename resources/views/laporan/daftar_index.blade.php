@@ -1,4 +1,4 @@
-@extends('app_laporan', ['title' => 'Data Pasien'])
+@extends('app_laporan', ['title' => 'Data Pendaftaran Pasien'])
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
@@ -15,18 +15,20 @@
                                 <th>Nama</th>
                                 <th>Umur</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Tgl Buat</th>
+                                <th>Tgl Daftar</th>
+                                <th>Poli</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($models as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->no_pasien }}</td>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->umur }}</td>
-                                    <td>{{ ucfirst($item->jenis_kelamin) }}</td>
-                                    <td>{{ $item->created_at->format('d/m/Y') }}</td>
+                                    <td>{{ $item->pasien->no_pasien }}</td>
+                                    <td>{{ $item->pasien->nama }}</td>
+                                    <td>{{ $item->pasien->umur }}</td>
+                                    <td>{{ ucfirst($item->pasien->jenis_kelamin) }}</td>
+                                    <td>{{ $item->tanggal_daftar }}</td>
+                                    <td>{{ $item->poli->nama }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -2,15 +2,18 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Middleware\Authenticate;
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\DaftarController;
-use Illuminate\Auth\Middleware\Authenticate;
+use App\Http\Controllers\LaporanPasienController;
 
 
 Route::middleware([Authenticate::class]) -> group(function () {
     Route::resource('pasien', PasienController::class);
     Route::resource('daftar', DaftarController::class);
+    Route::resource('laporan-pasien', LaporanPasienController::class);
 });
 
 Route::post('/daftar/create', [DaftarController::class, 'store'])->name('daftar.store');

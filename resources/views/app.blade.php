@@ -204,8 +204,7 @@
 
                     {{-- Pembayaran --}}
                     <li class="menu-item">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
-                            target="_blank" class="menu-link">
+                        <a href="/laporan-pasien/create" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-user-rectangle"></i>
                             <div class="text-truncate" data-i18n="Documentation">Pasien</div>
                         </a>
@@ -255,7 +254,7 @@
                                     <!-- Breadcrumb utama -->
                                     {{-- Pasien --}}
                                     @if (Route::is('pasien.index', 'pasien.create', 'pasien.show',
-                                                    'daftar.index','daftar.create','daftar.edit'))
+                                                    'daftar.index','daftar.create','daftar.show'))
                                         <li class="breadcrumb-item"><a href="{{ route('pasien.index') }}">Pasien</a>
                                         </li>
                                         
@@ -275,9 +274,9 @@
                                         </li>
 
                                     {{-- Laporan --}}
-                                    @elseif (Route::is('laporan.index'))
+                                    @elseif (Route::is('laporan-pasien.index','laporan-pasien.create'))
                                         <li class="breadcrumb-item"><a
-                                                href="{{ route('laporan.index') }}">Laporan</a>
+                                                href="{{ route('laporan-pasien.index') }}">Laporan</a>
                                         </li>
                                     @endif
 

@@ -48,9 +48,10 @@ class DaftarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Daftar $daftar)
+    public function show($id)
     {
-        
+        $data['daftar'] = \App\Models\Daftar::findOrFail($id);
+        return view('daftar.show', $data);
     }
 
     /**
@@ -64,9 +65,18 @@ class DaftarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Daftar $daftar)
+    public function update(Request $request, $id)
     {
-        //
+        $requestData = $request->validate([
+            'tindakan'=> 'required',
+            'diagnosis'=> 'required',
+        ]);
+
+        $daftar = \App\Models\Daftar::findOrFail($id);
+        $daftar -> fill($requestData);
+        $daftar -> save();
+        flash('Berhasil, Data Pendaftaran Pasien Diupdate!')->info();
+        return redirect('/daftar');
     }
 
     /**

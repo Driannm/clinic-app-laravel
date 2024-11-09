@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use App\Exports\PasienExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PasienController extends Controller
 {
@@ -123,6 +125,11 @@ class PasienController extends Controller
         $pasien->delete();
         flash('Berhasil, Data ' . $pasien->nama . ' Telah Dihapus!')->warning();
         return redirect('/pasien');
+    }
+
+    public function downloadData()
+    {
+        return Excel::download(new PasienExport, 'data_pasien.xlsx');
     }
 
     //     public function search(Request $request)

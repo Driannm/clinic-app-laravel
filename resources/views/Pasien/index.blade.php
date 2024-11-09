@@ -10,14 +10,17 @@
                     <div class="col-md-12 d-flex justify-content-between">
                         {{-- Button --}}
                         <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
-
+                    
                         {{-- Search Bar --}}
-                        <div class="d-flex align-items-center">
-                            <i class="bx bx-search bx-md"></i>
-                            <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2"
-                                placeholder="Search..." aria-label="Search..." />
+                        <div class="d-flex align-items-center ms-3">
+                            <form method="GET" action="{{ route('pasien.index') }}" class="d-flex align-items-center">
+                                <i class="bx bx-search bx-md"></i>
+                                <input type="text" name="query" class="form-control border-0 shadow-none ps-1 ps-sm-2"
+                                    placeholder="Search..." aria-label="Search..." value="{{ request('query') }}" />
+                            </form>
                         </div>
                     </div>
+                    
                 </div>
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible" role="alert">

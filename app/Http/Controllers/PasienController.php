@@ -7,28 +7,27 @@ use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $data['title'] = 'Daftar Pasien';
-        $data['pasien'] = \App\Models\Pasien::latest()->paginate(6);
-        return view('pasien.index', $data);
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function index(Request $request)
+    {
+        $query = $request->input('query');
+        $pasien = $query ?
+            Pasien::where('nama', 'like', "%{$query}%")
+            ->orWhere('no_pasien', 'like', "%{$query}%")
+            ->paginate(6) :
+            Pasien::latest()->paginate(6); // Menggunakan data terbaru jika tidak ada query
+            $data['pasien'] = \App\Models\Pasien::latest()->paginate(6);
+        return view('pasien.index', [
+            'pasien' => $pasien,
+            'title' => 'Daftar Pasien',
+        ]);
+    }
     public function create()
     {
         $data['title'] = 'Tambah Pasien';
         return view('pasien.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $requestData = $request->validate([
@@ -59,23 +58,14 @@ class PasienController extends Controller
         return redirect('/pasien');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $data['pasien'] = \App\Models\Pasien::findOrFail($id);
         return view('pasien.edit', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id) {}
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $requestData = $request->validate([
@@ -114,13 +104,8 @@ class PasienController extends Controller
         return redirect()->route('pasien.index');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        // Temukan pasien berdasarkan ID atau gagal jika tidak ditemukan
         $pasien = \App\Models\Pasien::findOrFail($id);
 
         if ($pasien->daftar->count() > 0) {
@@ -128,7 +113,6 @@ class PasienController extends Controller
             return redirect('/pasien');
         }
 
-        // Hapus foto jika ada
         if (!is_null($pasien->foto)) {
             $oldImage = public_path('uploads/' . $pasien->foto);
             if (file_exists($oldImage)) {
@@ -140,4 +124,12 @@ class PasienController extends Controller
         flash('Berhasil, Data ' . $pasien->nama . ' Telah Dihapus!')->warning();
         return redirect('/pasien');
     }
+
+    //     public function search(Request $request)
+    //     {
+    //         $query = $request->input('query');
+    //         $posts = Pasien::search($query)->get();
+
+    //         return view('posts.index', compact('posts'));
+    //     }
 }

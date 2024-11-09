@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>{{ env('APP_NAME') }} | {{ $title ?? '' }}</title>
+    <title>{{ $title ?? '' }} | {{ env('APP_NAME') }}</title>
 
     <meta name="description" content="" />
 
@@ -65,9 +65,9 @@
                 <ul class="menu-inner py-1">
 
                     <!-- Dashboards -->
-                    <li class="menu-item {{ Request::is('dashboard') ? 'active open' : '' }}">
+                    <li class="menu-item {{ Request::is('home') ? 'active open' : '' }}">
                         <a href="/home" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-smile"></i>
+                            <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                             <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
                         </a>
                     </li>
@@ -80,7 +80,7 @@
                     {{-- Daftar Pasien --}}
                     <li class="menu-item {{ Request::is('pasien') ? 'active open' : '' }}">
                         <a href="/pasien" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-user"></i>
+                            <i class="menu-icon tf-icons bx bxs-user"></i>
                             <div class="text-truncate" data-i18n="Pasien">Daftar Pasien</div>
                         </a>
                     </li>
@@ -88,7 +88,7 @@
                     {{-- Pendaftaran Pasien --}}
                     <li class="menu-item {{ Request::is('daftar') ? 'active open' : '' }}">
                         <a href="/daftar" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-clipboard"></i>
+                            <i class="menu-icon tf-icons bx bxs-food-menu"></i>
                             <div class="text-truncate" data-i18n="Pasien">Pendaftaran Pasien</div>
                         </a>
                     </li>
@@ -104,105 +104,82 @@
                     </li> --}}
 
                     {{-- Menu - Dokter --}}
-                    {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Dokter</span></li> --}}
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Dokter</span></li>
 
                     {{-- Daftar Dokter --}}
-                    {{-- <li class="menu-item {{ Request::is('dokter') ? 'active open' : '' }}">
+                    <li class="menu-item {{ Request::is('dokter') ? 'active open' : '' }}">
                         <a href="/dokter" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-user"></i>
+                            <i class="menu-icon tf-icons bx bxs-user"></i>
                             <div class="text-truncate" data-i18n="Basic">Daftar Dokter</div>
                         </a>
-                    </li> --}}
-
-                    {{-- Tambah Dokter --}}
-                    {{-- <li class="menu-item {{ Request::is('dokter/create') ? 'active open' : '' }}">
-                        <a href="/dokter/create" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-plus-circle"></i>
-                            <div class="text-truncate" data-i18n="Basic">Tambah Dokter</div>
-                        </a>
-                    </li> --}}
+                    </li>
 
                     {{-- Jadwal Praktek --}}
-                    {{-- <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-calendar"></i>
+                    <li class="menu-item {{ Request::is('dokter/jadwal') ? 'active open' : '' }}">
+                        <a href="/dokter/jadwal" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-calendar"></i>
                             <div class="text-truncate" data-i18n="Basic">Jadwal Praktek</div>
                         </a>
-                    </li> --}}
+                    </li>
 
                     {{-- Riwayat Tindakan --}}
-                    {{-- <li class="menu-item">
-                        <a href="icons-boxicons.html" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-clipboard"></i>
+                    <li class="menu-item {{ Request::is('dokter/riwayat') ? 'active open' : '' }}">
+                        <a href="/dokter/riwayat" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-time"></i>
                             <div class="text-truncate" data-i18n="Boxicons">Riwayat Tindakan</div>
                         </a>
-                    </li> --}}
+                    </li>
 
-                    {{-- Janji Temu --}}
-                    {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Janji Temu</span></li> --}}
-
-                    {{-- Daftar Janji Temu --}}
-                    {{-- <li class="menu-item">
-                        <a href="tables-basic.html" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-calendar-check"></i>
-                            <div class="text-truncate" data-i18n="Tables">Daftar Janji Temu</div>
-                        </a>
-                    </li> --}}
-
-                    {{-- Tambah Janji Temu --}}
-                    {{-- <li class="menu-item">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/tables-datatables-basic.html"
-                            target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-calendar-plus"></i>
+                    {{-- Tambah Janji Temu
+                    <li class="menu-item {{ Request::is('janji-temu') ? 'active open' : '' }}">
+                        <a href="/janji-temu" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-calendar-plus"></i>
                             <div class="text-truncate" data-i18n="Datatables">Tambah Janji Temu</div>
                         </a>
                     </li> --}}
 
-                    {{-- Batal Janji Temu --}}
-                    {{-- <li class="menu-item">
+                    {{-- Batal Janji Temu
+                    <li class="menu-item">
                         <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/vertical-menu-template/tables-datatables-basic.html"
                             target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-calendar-x"></i>
+                            <i class="menu-icon tf-icons bx bxs-calendar-x"></i>
                             <div class="text-truncate" data-i18n="Datatables">Batal Janji Temu</div>
                         </a>
                     </li> --}}
 
 
                     {{-- Obat --}}
-                    {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Obat</span></li> --}}
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Lain - lain</span></li>
+
+                    {{-- Daftar Janji Temu --}}
+                    <li class="menu-item {{ Request::is('janji-temu') ? 'active open' : '' }}">
+                        <a href="/janji-temu" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-calendar-check"></i>
+                            <div class="text-truncate" data-i18n="Tables">Daftar Janji Temu</div>
+                        </a>
+                    </li>
 
                     {{-- Daftar Obat --}}
-                    {{-- <li class="menu-item">
-                        <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                            target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-capsule"></i>
+                    <li class="menu-item {{ Request::is('obat') ? 'active open' : '' }}">
+                        <a href="/obat" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-capsule"></i>
                             <div class="text-truncate" data-i18n="Support">Daftar Obat</div>
                         </a>
-                    </li> --}}
-
-                    {{-- Tambah Obat --}}
-                    {{-- <li class="menu-item">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
-                            target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-plus-circle"></i>
-                            <div class="text-truncate" data-i18n="Documentation">Tambah Obat</div>
-                        </a>
-                    </li> --}}
+                    </li>
 
                     {{-- Stok Obat --}}
-                    {{-- <li class="menu-item">
-                        <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
-                            target="_blank" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-box"></i>
+                    <li class="menu-item {{ Request::is('obat/stok') ? 'active open' : '' }}">
+                        <a href="/obat/stok" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-box"></i>
                             <div class="text-truncate" data-i18n="Documentation">Stok Obat</div>
                         </a>
-                    </li> --}}
+                    </li>
 
                     {{-- Keuangan --}}
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Laporan</span></li>
 
                     {{-- Pembayaran --}}
-                    <li class="menu-item">
+                    <li class="menu-item {{ Request::is('laporan-pasien/create') ? 'active open' : '' }}">
                         <a href="/laporan-pasien/create" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-user-rectangle"></i>
                             <div class="text-truncate" data-i18n="Documentation">Data Pasien</div>
@@ -210,7 +187,7 @@
                     </li>
 
                     {{-- Tagihan --}}
-                    <li class="menu-item">
+                    <li class="menu-item {{ Request::is('laporan-daftar/create') ? 'active open' : '' }}">
                         <a href="/laporan-daftar/create" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-report"></i>
                             <div class="text-truncate" data-i18n="Documentation">Data Pendaftaran</div>
@@ -247,7 +224,7 @@
                         <div class="navbar-nav align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
 
                                     <!-- Breadcrumb utama -->
                                     {{-- Pasien --}}

@@ -7,11 +7,21 @@ use App\Models\Dokter;
 
 class DokterController extends Controller
 {
-    public function index() 
+    
+    public function index(Request $request)
     {
-        $data['title'] = 'Daftar Dokter';
-        $data['dokter'] = \App\Models\Dokter::latest() -> paginate(10);
-        return view('Dokter.index', $data);
+        $query = $request->input('query');
+        $dokter = $query ?
+            Dokter::where('nama', 'like', "%{$query}%")
+            ->orWhere('no_dokter', 'like', "%{$query}%")
+            ->paginate(6) :
+            Dokter::latest()->paginate(6); // Menggunakan data terbaru jika tidak ada query
+            
+        $data['dokter'] = \App\Models\Dokter::latest() -> paginate(6);
+        return view('dokter.index', [
+            'dokter' => $dokter,
+            'title' => 'Daftar Pasien',
+        ]);
     }
 
     public function create() 
@@ -63,8 +73,17 @@ class DokterController extends Controller
 
     public function destroy(string $id)
     {
-        \App\Models\Dokter::findOrFail($id);
-        flash('Data sudah berhasil dihapus!') -> success();
-        return back();
+        $dokter = \App\Models\Dokter::findOrFail($id);
+
+        if (!is_null($dokter->foto)) {
+            $oldImage = public_path('uploads/' . $dokter->foto);
+            if (file_exists($oldImage)) {
+                unlink($oldImage);
+            }
+        }
+
+        $dokter->delete();
+        flash('Berhasil, Data ' . $dokter->nama . ' Telah Dihapus!')->warning();
+        return redirect('/dokter');
     }
 }

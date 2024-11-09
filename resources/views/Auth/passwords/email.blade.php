@@ -46,6 +46,10 @@
                             </div>
 
                         </form>
+                        
+                        <div class="mb-6">
+                            <a href="/login" class="btn btn-outline-dark d-grid w-100">Kembali</a>
+                        </div>
 
                     </div>
                 </div>

@@ -4,6 +4,15 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0 fw-semibold">DATA PASIEN</h5>
+
+                {{-- Search Bar --}}
+                <div class="d-flex align-items-center ms-3">
+                    <form method="GET" action="{{ route('pasien.index') }}" class="d-flex align-items-center">
+                        <i class="bx bx-search bx-md"></i>
+                        <input type="text" name="query" class="form-control border-0 shadow-none ps-1 ps-sm-2"
+                            placeholder="Search..." aria-label="Search..." value="{{ request('query') }}" />
+                    </form>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
@@ -11,14 +20,7 @@
                         {{-- Button --}}
                         <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
                     
-                        {{-- Search Bar --}}
-                        <div class="d-flex align-items-center ms-3">
-                            <form method="GET" action="{{ route('pasien.index') }}" class="d-flex align-items-center">
-                                <i class="bx bx-search bx-md"></i>
-                                <input type="text" name="query" class="form-control border-0 shadow-none ps-1 ps-sm-2"
-                                    placeholder="Search..." aria-label="Search..." value="{{ request('query') }}" />
-                            </form>
-                        </div>
+                        
                     </div>
                     
                 </div>

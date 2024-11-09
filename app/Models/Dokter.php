@@ -2,28 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Dokter extends Model
 {
+    use HasFactory;
     use SearchableTrait;
+    protected $guarded = [];
 
-    /**
-     * Searchable rules.
-     *
-     * @var array
-     */
     protected $searchable = [
         'columns' => [
-            'nama' => 10, // Angka ini adalah "relevansi" untuk kolom ini
-            'keahlian' => 5,
-            'kategori' => 2,
-            // Kamu bisa tambahin kolom lain kalau mau
-        ]
+            'nama' => 10,
+            'no_dokter' => 5,
+            // Tambahkan kolom lain sesuai kebutuhan
+        ],
     ];
-
-    use HasFactory;
-    protected $guarded = [];
 }

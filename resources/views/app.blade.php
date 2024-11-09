@@ -15,6 +15,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
+    <!-- Select 2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -313,7 +316,7 @@
                                         <a href="#"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();"
-                                            class="btn btn-outline-primary mx-3 mt-2 d-block"> Log Out
+                                            class="btn btn-outline-danger mx-3 mt-2 d-block"> Log Out
                                         </a>
                                         <form action="{{ route('logout') }}" id="logout-form" method="POST"
                                             class="d-none">
@@ -387,6 +390,9 @@
     <script src="../assets/vendor/js/bootstrap.js"></script>
     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../assets/vendor/js/menu.js"></script>
+
+    <!-- Select 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- endbuild -->
 

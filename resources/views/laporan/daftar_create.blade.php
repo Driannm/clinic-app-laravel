@@ -11,15 +11,15 @@
                         <form action="/laporan-daftar" method="GET" target="_blank">
                             <div class="row mt-3">
                                 <div class="form-group col-md-4">
-                                    <label for="tanggal_mulai">Tanggal Daftar Mulai</label>
+                                    <label for="tanggal_mulai" class="form-label">Tanggal Daftar Mulai</label>
                                     <input type="date" name="tanggal_mulai" class="form-control">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="tanggal_akhir">Tanggal Daftar Akhir</label>
+                                    <label for="tanggal_akhir" class="form-label">Tanggal Daftar Akhir</label>
                                     <input type="date" name="tanggal_akhir" class="form-control">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="poli">Pilih Polli</label>
+                                    <label for="poli" class="form-label">Pilih Polli</label>
                                     <select name="poli" class="form-control">
                                         <option value="">-- Semua Data --</option>
                                         @foreach ($listPoli as $key => $val)

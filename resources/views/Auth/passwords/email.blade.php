@@ -1,47 +1,55 @@
 @extends('Auth.auth_app', ['title' => 'Reset Password'])
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-inner">
+                <div class="card px-sm-6 px-0">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="card-body">
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        {{-- Logo --}}
+                        <div class="app-brand justify-content-center">
+                            <a href="login" class="app-brand-link gap-2">
+                                <img src="../assets/img/favicon/favicon.ico" width="50" alt="">
+                                <span class="app-brand-text demo text-heading fw-bold">Berkah Jaya</span>
+                            </a>
                         </div>
+                        {{-- Logo --}}
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
+                        <!-- Description -->
+                        <h4 class="mb-1 text-center fw-semibold">Lupa Kata Sandi?</h4>
+                        <p class="mb-6 text-center">Jangan khawatir, Kami akan mengirimkan instruksi pengaturan ulang kepada Anda</p>
+                        {{-- Description --}}
+
+                        <form method="POST" action="{{ route('password.email') }}">
+                            @csrf
+
+                            <div class="mb-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input id="email" type="text" class="form-control" 
+                                        @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
+                                        placeholder="Masukan Email Anda.." autocomplete="email" autofocus />
+
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
-                        </div>
-                    </form>
+                        
+                            <div class="mb-6">
+                                <button class="btn btn-primary d-grid w-100" type="submit">Kirim Tautan Reset Kata Sandi</button>
+                            </div>
+
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

@@ -11,6 +11,13 @@ use App\Http\Controllers\LaporanPasienController;
 use App\Http\Controllers\LaporanDaftarController;
 
 
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
 Route::middleware([Authenticate::class]) -> group(function () {
     Route::resource('pasien', PasienController::class);
     Route::resource('daftar', DaftarController::class);
@@ -19,13 +26,9 @@ Route::middleware([Authenticate::class]) -> group(function () {
 });
 
 Route::post('/daftar/create', [DaftarController::class, 'store'])->name('daftar.store');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/download-data-pasien', [PasienController::class, 'downloadData'])->name('downloadDataPasien');
 Route::get('/download-data-daftar', [DaftarController::class, 'downloadDataDaftar'])->name('downloadDataDaftar');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

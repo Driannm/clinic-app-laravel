@@ -333,10 +333,14 @@
                                         <div class="dropdown-divider my-1"></div>
                                     </li>
                                     <li>
-                                        <form action="{{ route('logout') }}" method="POST">
-                                            <a class="dropdown-item">
-                                                <i class="bx bx-power-off bx-md me-3"></i><span>Keluar</span>
-                                            </a>
+                                        <a href="#"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"
+                                            class="btn btn-outline-primary mx-3 mt-2 d-block"> Log Out
+                                        </a>
+                                        <form action="{{ route('logout') }}" id="logout-form" method="POST"
+                                            class="d-none">
+                                            @csrf
                                         </form>
                                     </li>
                                 </ul>

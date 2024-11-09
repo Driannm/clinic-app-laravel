@@ -1,4 +1,4 @@
-@extends('app')
+@extends('Auth.auth_app', ['title' => 'Reset Password'])
 
 @section('content')
 <div class="container">

@@ -4,21 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Daftar;
 use Illuminate\Http\Request;
+use App\Exports\DaftarExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DaftarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $daftar = \App\Models\Daftar::with('Pasien')->latest()->paginate(6);
         return view('daftar.index', compact('daftar'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $data['listPasien'] = \App\Models\Pasien::orderBy('nama', 'asc') -> get();
@@ -26,9 +22,6 @@ class DaftarController extends Controller
         return view('daftar.create', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $requestData = $request->validate([
@@ -45,26 +38,17 @@ class DaftarController extends Controller
         return redirect('/daftar');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $data['daftar'] = \App\Models\Daftar::findOrFail($id);
         return view('daftar.show', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Daftar $daftar)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $requestData = $request->validate([
@@ -79,13 +63,15 @@ class DaftarController extends Controller
         return redirect('/daftar');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Daftar $daftar)
     {
         $daftar->delete();
         flash('Berhasil, Data Pendaftaran Pasien Dihapus!')->warning();
         return back();
+    }
+    
+    public function downloadDataDaftar()
+    {
+        return Excel::download(new DaftarExport, 'data_daftar.xlsx');
     }
 }

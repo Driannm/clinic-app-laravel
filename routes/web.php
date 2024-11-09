@@ -20,6 +20,7 @@ Route::middleware([Authenticate::class]) -> group(function () {
 
 Route::post('/daftar/create', [DaftarController::class, 'store'])->name('daftar.store');
 Route::get('/download-data-pasien', [PasienController::class, 'downloadData'])->name('downloadDataPasien');
+Route::get('/download-data-daftar', [DaftarController::class, 'downloadDataDaftar'])->name('downloadDataDaftar');
 
 Route::get('/', function () {
     return view('welcome');

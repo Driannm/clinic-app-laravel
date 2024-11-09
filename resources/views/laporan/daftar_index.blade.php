@@ -4,6 +4,10 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0 fw-semibold">DATA PENDAFTARAN PASIEN</h5>
+                <!-- Button download -->
+                <a href="{{ route('downloadDataDaftar') }}" class="btn btn-sm btn-success">
+                    <i class="fa fa-download"></i> Download
+                </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive text-nowrap">

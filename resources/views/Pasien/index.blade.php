@@ -54,8 +54,13 @@
                                     <td>
                                         <div class="showPhoto">
                                             <div id="imagePreview"
-                                                style="@if ($item->foto != '') background-image:url('{{ url('/') }}/uploads/{{ $item->foto }}')
-                  @else background-image: url('{{ url('/storage/avatar.png') }}') @endif;">
+                                                style="@if ($item->foto != '')
+                                                          background-image: url('{{ url('/') }}/uploads/{{ $item->foto }}');
+                                                      @elseif (trim(strtolower($item->jenis_kelamin)) == 'perempuan')
+                                                          background-image: url('{{ url('/storage/avatar-basic-female.jpg') }}');
+                                                      @else
+                                                          background-image: url('{{ url('/storage/avatar-basic-male.jpg') }}');
+                                                      @endif;">
                                             </div>
                                         </div>
                                     </td>
@@ -92,20 +97,18 @@
 
 <style>
     .showPhoto {
-        width: 80%;
-        height: 45px;
-        display: flex;
-        justify-content: flex-start;
-        /* Foto akan ke kiri */
-        align-items: center;
-    }
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden; 
+    display: inline-block;
+}
 
-    .showPhoto>div {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+#imagePreview {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
 </style>
+

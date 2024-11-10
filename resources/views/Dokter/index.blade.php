@@ -6,10 +6,10 @@
                 <h5 class="mb-0 fw-semibold">DAFTAR DOKTER</h5>
                 <!-- Search Bar -->
                 <div class="d-flex align-items-center ms-3">
-                  <form method="GET" action="{{ route('dokter.index') }}" class="d-flex">
-                    <input type="text" name="query" class="form-control  shadow-none ps-1 ps-sm-2"
-                        placeholder="Search..." aria-label="Search..." value="{{ request('query') }}" />
-                </form>
+                    <form method="GET" action="{{ route('dokter.index') }}" class="d-flex">
+                        <input type="text" name="query" class="form-control  shadow-none ps-1 ps-sm-2"
+                            placeholder="Search..." aria-label="Search..." value="{{ request('query') }}" />
+                    </form>
                 </div>
             </div>
 
@@ -54,8 +54,13 @@
                                     <td>
                                         <div class="showPhoto">
                                             <div id="imagePreview"
-                                                style="@if ($item->foto != '') background-image:url('{{ url('/') }}/uploads/{{ $item->foto }}')
-                  @else background-image: url('{{ url('/storage/avatar.png') }}') @endif;">
+                                                style="@if ($item->foto != '')
+                                                          background-image: url('{{ url('/') }}/uploads/{{ $item->foto }}');
+                                                      @elseif (trim(strtolower($item->jenis_kelamin)) == 'perempuan')
+                                                          background-image: url('{{ url('/storage/avatar-doctor-2.jpg') }}');
+                                                      @else
+                                                          background-image: url('{{ url('/storage/avatar-doctor-1.jpg') }}');
+                                                      @endif;">
                                             </div>
                                         </div>
                                     </td>
@@ -98,20 +103,17 @@
 
 <style>
     .showPhoto {
-        width: 80%;
-        height: 45px;
-        display: flex;
-        justify-content: flex-start;
-        /* Foto akan ke kiri */
-        align-items: center;
-    }
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden; 
+    display: inline-block;
+}
 
-    .showPhoto>div {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+#imagePreview {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
 </style>

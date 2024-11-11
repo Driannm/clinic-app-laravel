@@ -49,12 +49,12 @@
                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label><br>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki_laki" value="Laki-Laki"
-                                    {{ old('jenis_kelamin') ?? $pasien -> jenis_kelamin === 'Laki-Laki' ? 'checked' : '' }}>
+                                    {{ old('jenis_kelamin') ?? $pasien->jenis_kelamin === 'laki-laki' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="laki_laki">Laki-laki</label>
                             </div>
                             <div class="form-check form-check-inline mt-1">
                                 <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan"
-                                    {{ old('jenis_kelamin') ?? $pasien -> jenis_kelamin === 'Perempuan' ? 'checked' : '' }}>
+                                    {{ old('jenis_kelamin') ?? $pasien->jenis_kelamin === 'perempuan' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="perempuan">Perempuan</label>
                             </div>
                             <span class="text-danger">{{ $errors->first('jenis_kelamin') }}</span>
@@ -63,9 +63,10 @@
                         <div class="form-group mt-1 mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat"
-                                name="alamat" value="{{ old('alamat') }}">
+                                name="alamat" value="{{ old('alamat') ?? $pasien->alamat }}">
                             <span class="text-danger">{{ $errors->first('alamat') }}</span>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Edit</button>
                     </div>    
                 </form>

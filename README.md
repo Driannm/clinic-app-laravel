@@ -1,4 +1,10 @@
-<p align="center"><a href="https://laravel.com"><img src="./public/assets/img/favicon/favicon.ico" width="55" alt="Laravel Logo"></a class="app-brand-text demo menu-text fw-bold ms-2">Berkah Jaya</p>
+<p align="center">
+  <a href="https://laravel.com" style="flex-shrink: 0; opacity: 1; transition: opacity 0.15s ease-in-out; color: #fff; font-weight: 700 !important; margin-left: 0.5rem !important;">
+    <img src="./public/assets/img/favicon/favicon.ico" width="55" alt="Laravel Logo">
+  </a>
+  Berkah Jaya
+</p>
+
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>

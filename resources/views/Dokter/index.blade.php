@@ -18,7 +18,7 @@
                 <div class="row mb-3">
                     <div class="col-md-12 d-flex justify-content-between">
                         {{-- Button --}}
-                        <a href="/pasien/create" class="btn btn-primary btn-sm">Tambah Pasien</a>
+                        <a href="/dokter/create" class="btn btn-primary btn-sm">Tambah Dokter</a>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                                     <td>{{ $item->kategori }}</td>
                                     <td>{{ $item->keahlian }}</td>
                                     <td>
-                                        <a href="/pasien/detail/{{ $item->id }}"
+                                        <a href="/dokter/detail/{{ $item->id }}"
                                             class="btn btn-sm btn-primary mt-1">Detail</a>
                                         <form action="/dokter/{{ $item->id }}" method="post" class="d-inline">
                                             @csrf

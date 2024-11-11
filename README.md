@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com"><img src="./public/assets/img/favicon/favicon.ico" width="35" alt="Laravel Logo"></a>Berkah Jaya</p>
+<p align="center"><a href="https://laravel.com"><img src="./public/assets/img/favicon/favicon.ico" width="55" alt="Laravel Logo"></a>Berkah Jaya</p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>

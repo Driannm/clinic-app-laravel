@@ -71,8 +71,8 @@
                                     <td>{{ $item->kategori }}</td>
                                     <td>{{ $item->keahlian }}</td>
                                     <td>
-                                        <a href="/dokter/detail/{{ $item->id }}"
-                                            class="btn btn-sm btn-primary mt-1">Detail</a>
+                                        <a href="/dokter/{{ $item->id }}"
+                                            class="btn btn-sm btn-info mt-1">Edit</a>
                                         <form action="/dokter/{{ $item->id }}" method="post" class="d-inline">
                                             @csrf
                                             @method('DELETE')

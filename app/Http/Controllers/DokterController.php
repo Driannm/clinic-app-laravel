@@ -65,10 +65,52 @@ class DokterController extends Controller
         flash('Berhasil, Data dokter telah tersimpan!')->success();
         return back();
     }
-
-    public function show($id) 
+    
+    public function update(Request $request, string $id)
     {
-        return "Halo, saya berada dihalaman show dengan nilai $id";
+        $requestData = $request->validate([
+            'no_dokter' => 'required|unique:pasiens,no_pasien,' . $id,
+            'nama' => 'required',
+            'umur' => 'required|numeric',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+            'kategori' => 'nullable',
+            'keahlian' => 'nullable',
+            'jadwal_praktek' => 'required',
+            'foto' => 'nullable|mimes:jpg,jpeg,png|max:5000',
+            'alamat' => 'nullable',
+        ]);
+
+        $dokter = \App\Models\Dokter::findOrFail($id);
+        $dokter->fill($requestData);
+
+        // Jika ada file foto yang diupload
+        if ($request->hasfile('foto')) {
+            $filePath = public_path('uploads');
+            $file = $request->file('foto');
+            $file_name = time() . $file->getClientOriginalName();
+            $file->move($filePath, $file_name);
+
+            // Hapus foto lama jika ada
+            if (!is_null($dokter->foto)) {
+                $oldImage = public_path('uploads/' . $dokter->foto);
+                if (file_exists($oldImage)) {
+                    unlink($oldImage);
+                }
+            }
+
+            $dokter->foto = $file_name;
+        }
+
+        $dokter->save();
+
+        flash('Berhasil, Data ' . $dokter->nama . ' Telah Diupdate!')->info();
+        return redirect()->route('dokter.index');
+    }
+    
+    public function show(string $id)
+    {
+        $data['dokter'] = \App\Models\Dokter::findOrFail($id);
+        return view('dokter.edit', $data);
     }
 
     public function destroy(string $id)

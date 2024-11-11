@@ -112,6 +112,12 @@ class DokterController extends Controller
         $data['dokter'] = \App\Models\Dokter::findOrFail($id);
         return view('dokter.edit', $data);
     }
+    
+    public function jadwal()
+    {
+        $dokter = \App\Models\Dokter::latest()->paginate(6);
+        return view('dokter.jadwal', compact('dokter'));
+    }
 
     public function destroy(string $id)
     {

@@ -68,10 +68,10 @@
                                 </div>
                             </div>
 
-                            <a href="/pasien" class="btn btn-primary mt-1 mb-2">Kembali</a>
                             <button type="submit" class="btn btn-success mt-1 mb-2">Simpan</button>
+                            <a href="/pasien" class="btn btn-outline-dark ms-2 mt-1 mb-2">Kembali</a>
                             @if (session('success'))
-                                <div class="alert alert-success alert-dismissible" role="alert">
+                            <div class="alert alert-success alert-dismissible" role="alert">
                                     {{ session('success') }}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>

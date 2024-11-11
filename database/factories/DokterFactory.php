@@ -23,6 +23,7 @@ class DokterFactory extends Factory
                 'jenis_kelamin' => fake() -> randomElement(['Laki-Laki', 'Perempuan']),
                 'kategori' => fake() -> randomElement(['Umum', 'Spesialis Anak', 'Spesialis Bedah', 'Spesialis Jantung', 'Spesialis Kulit']),
                 'keahlian' => fake() -> randomElement(['Bedah Umum', 'Kardiologi', 'Pediatri', 'Ortopedi', 'Dermatologi']),
-        ];
+                'jadwal_praktek' => fake() -> randomElement(['Senin - Selasa', 'Rabu - Kamis', 'Selasa - Kamis', 'Sabtu - Senin', 'Jumat - Sabtu']),
+            ];
     }
 }

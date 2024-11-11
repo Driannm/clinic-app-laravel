@@ -11,8 +11,6 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\LaporanPasienController;
 use App\Http\Controllers\LaporanDaftarController;
 
-
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,6 +23,7 @@ Route::middleware([Authenticate::class]) -> group(function () {
     Route::resource('dokter', DokterController::class);
     Route::resource('laporan-pasien', LaporanPasienController::class);
     Route::resource('laporan-daftar', LaporanDaftarController::class);
+    Route::get('/jadwal', [DokterController::class, 'jadwal'])->name('dokter.jadwal');
 });
 
 Route::post('/daftar/create', [DaftarController::class, 'store'])->name('daftar.store');

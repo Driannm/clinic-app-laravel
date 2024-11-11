@@ -5,14 +5,40 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0 fw-semibold">DATA PENDAFTARAN PASIEN | {{ strtoupper($daftar->pasien->nama) }}</h5>
+                        <h5 class="fw-semibold">DATA PENDAFTARAN PASIEN | {{ strtoupper($daftar->pasien->nama) }}</h5>
                     </div>
+
                     <div class="card-body">
                         <table width="100%">
                             <tbody>
                                 <tr>
                                     <th width="15%">No Pasien</th>
                                     <td> : {{ $daftar->pasien->no_pasien }}</td>
+                                    <td rowspan="3" style="text-align: right; vertical-align: middle;">
+                                        <div class="showPhoto" style="display: inline-block; margin-left: auto; margin-right: 0;">
+                                            <div id="imagePreview"
+                                                style="
+                                                    width: 100px;
+                                                    height: 100px;
+                                                    border-radius: 50%;
+                                                    background-size: cover;
+                                                    background-position: center;
+                                                    margin: 0 auto;
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    background-image: 
+                                                        @if ($daftar->pasien->foto != '') 
+                                                            url('{{ url('/') }}/uploads/{{ $daftar->pasien->foto }}');
+                                                        @elseif (trim(strtolower($daftar->jenis_kelamin)) == 'perempuan')
+                                                            url('{{ url('/storage/avatar-basic-female.jpg') }}');
+                                                        @else
+                                                            url('{{ url('/storage/avatar-basic-male.jpg') }}');
+                                                        @endif;
+                                                ">
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Nama Pasien</th>
@@ -24,6 +50,8 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
+                        
                         <hr>
                         <h4>Riwayat Pasien</h4>
                         <table class="table table-striped">
@@ -96,3 +124,19 @@
         </div>
     </div>
 @endsection
+<style>
+    .showPhoto {
+    width: 100px; 
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden; 
+    display: inline-block;
+}
+
+#imagePreview {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+</style>

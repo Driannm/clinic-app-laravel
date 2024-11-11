@@ -70,6 +70,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-success mt-1 mb-2">Simpan</button>
+                            <a href="/dokter" class="btn btn-outline-dark ms-2 mt-1 mb-2">Kembali</a>
 
                             @if (session()->has('pesan'))
                                 <div class="alert alert-info content-wrapper mt-1 mb-2" role="alert">

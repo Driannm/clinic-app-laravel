@@ -1,4 +1,16 @@
 @extends('app', ['title' => 'Data Pendaftaran Pasien'])
+
+@section('search')
+<form method="GET" action="{{ route('daftar.index') }}">
+    <div class="d-flex justify-content-center mt-3">
+        <div class="search">
+            <input type="text" name="query" class="form-control border-1 shadow-none ps-1 ps-sm-2"
+            placeholder="Search..." aria-label="Search..." value="{{ request('query') }}" autocomplete="off"/>
+        </div>
+    </div>
+</form>
+@endsection
+
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
@@ -10,13 +22,6 @@
                     <div class="col-md-12 d-flex justify-content-between">
                         {{-- Button --}}
                         <a href="/daftar/create" class="btn btn-primary btn-sm">Tambah Data</a>
-
-                        {{-- Search Bar --}}
-                        <div class="d-flex align-items-center">
-                            <i class="bx bx-search bx-md"></i>
-                            <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2"
-                                placeholder="Search..." aria-label="Search..." />
-                        </div>
                     </div>
                 </div>
                 @if (session('success'))

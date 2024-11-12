@@ -70,7 +70,11 @@
                     <!-- Dashboards -->
                     <li class="menu-item {{ Request::is('home') ? 'active open' : '' }}">
                         <a href="/home" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-dashboard"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="menu-icon size-6">
+                                <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd" />
+                              </svg>
+                                                            
+                            
                             <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
                         </a>
                     </li>
@@ -81,17 +85,29 @@
                     </li>
 
                     {{-- Daftar Pasien --}}
-                    <li class="menu-item {{ Request::is('pasien') ? 'active open' : '' }}">
+                    <li class="menu-item {{ Request::is('pasien','pasien/create') ? 'active open' : '' }}">
                         <a href="/pasien" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-user"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="menu-icon size-6">
+                                <path fill-rule="evenodd"
+                                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             <div class="text-truncate" data-i18n="Pasien">Daftar Pasien</div>
                         </a>
                     </li>
 
                     {{-- Pendaftaran Pasien --}}
-                    <li class="menu-item {{ Request::is('daftar') ? 'active open' : '' }}">
+                    <li class="menu-item {{ Request::is('daftar','daftar/create') ? 'active open' : '' }}">
                         <a href="/daftar" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-food-menu"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="menu-icon size-6" width="23" height="23">
+                                <path fill-rule="evenodd"
+                                    d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V18a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V12Z"
+                                    clip-rule="evenodd" />
+                                <path
+                                    d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z" />
+                            </svg>
                             <div class="text-truncate" data-i18n="Pasien">Pendaftaran Pasien</div>
                         </a>
                     </li>
@@ -112,15 +128,27 @@
                     {{-- Daftar Dokter --}}
                     <li class="menu-item {{ Request::is('dokter') ? 'active open' : '' }}">
                         <a href="/dokter" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-user"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="menu-icon size-6">
+                                <path fill-rule="evenodd"
+                                    d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             <div class="text-truncate" data-i18n="Basic">Daftar Dokter</div>
                         </a>
                     </li>
 
                     {{-- Jadwal Praktek --}}
-                    <li class="menu-item {{ Request::is('dokter/jadwal') ? 'active open' : '' }}">
-                        <a href="/dokter/jadwal" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-calendar"></i>
+                    <li class="menu-item {{ Request::is('jadwal') ? 'active open' : '' }}">
+                        <a href="/jadwal" class="menu-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="menu-icon size-6">
+                                <path
+                                    d="M12 11.993a.75.75 0 0 0-.75.75v.006c0 .414.336.75.75.75h.006a.75.75 0 0 0 .75-.75v-.006a.75.75 0 0 0-.75-.75H12ZM12 16.494a.75.75 0 0 0-.75.75v.005c0 .414.335.75.75.75h.005a.75.75 0 0 0 .75-.75v-.005a.75.75 0 0 0-.75-.75H12ZM8.999 17.244a.75.75 0 0 1 .75-.75h.006a.75.75 0 0 1 .75.75v.006a.75.75 0 0 1-.75.75h-.006a.75.75 0 0 1-.75-.75v-.006ZM7.499 16.494a.75.75 0 0 0-.75.75v.005c0 .414.336.75.75.75h.005a.75.75 0 0 0 .75-.75v-.005a.75.75 0 0 0-.75-.75H7.5ZM13.499 14.997a.75.75 0 0 1 .75-.75h.006a.75.75 0 0 1 .75.75v.005a.75.75 0 0 1-.75.75h-.006a.75.75 0 0 1-.75-.75v-.005ZM14.25 16.494a.75.75 0 0 0-.75.75v.006c0 .414.335.75.75.75h.005a.75.75 0 0 0 .75-.75v-.006a.75.75 0 0 0-.75-.75h-.005ZM15.75 14.995a.75.75 0 0 1 .75-.75h.005a.75.75 0 0 1 .75.75v.006a.75.75 0 0 1-.75.75H16.5a.75.75 0 0 1-.75-.75v-.006ZM13.498 12.743a.75.75 0 0 1 .75-.75h2.25a.75.75 0 1 1 0 1.5h-2.25a.75.75 0 0 1-.75-.75ZM6.748 14.993a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Z" />
+                                <path fill-rule="evenodd"
+                                    d="M18 2.993a.75.75 0 0 0-1.5 0v1.5h-9V2.994a.75.75 0 1 0-1.5 0v1.497h-.752a3 3 0 0 0-3 3v11.252a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V7.492a3 3 0 0 0-3-3H18V2.993ZM3.748 18.743v-7.5a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5h-13.5a1.5 1.5 0 0 1-1.5-1.5Z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             <div class="text-truncate" data-i18n="Basic">Jadwal Praktek</div>
                         </a>
                     </li>
@@ -128,7 +156,13 @@
                     {{-- Riwayat Tindakan --}}
                     <li class="menu-item {{ Request::is('dokter/riwayat') ? 'active open' : '' }}">
                         <a href="/dokter/riwayat" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-time"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="menu-icon size-6">
+                                <path fill-rule="evenodd"
+                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+
                             <div class="text-truncate" data-i18n="Boxicons">Riwayat Tindakan</div>
                         </a>
                     </li>
@@ -152,12 +186,20 @@
 
 
                     {{-- Obat --}}
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Lain - lain</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Lain - lain</span>
+                    </li>
 
                     {{-- Daftar Janji Temu --}}
                     <li class="menu-item {{ Request::is('janji-temu') ? 'active open' : '' }}">
                         <a href="/janji-temu" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-calendar-check"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="menu-icon size-6">
+                                <path
+                                    d="M12 11.993a.75.75 0 0 0-.75.75v.006c0 .414.336.75.75.75h.006a.75.75 0 0 0 .75-.75v-.006a.75.75 0 0 0-.75-.75H12ZM12 16.494a.75.75 0 0 0-.75.75v.005c0 .414.335.75.75.75h.005a.75.75 0 0 0 .75-.75v-.005a.75.75 0 0 0-.75-.75H12ZM8.999 17.244a.75.75 0 0 1 .75-.75h.006a.75.75 0 0 1 .75.75v.006a.75.75 0 0 1-.75.75h-.006a.75.75 0 0 1-.75-.75v-.006ZM7.499 16.494a.75.75 0 0 0-.75.75v.005c0 .414.336.75.75.75h.005a.75.75 0 0 0 .75-.75v-.005a.75.75 0 0 0-.75-.75H7.5ZM13.499 14.997a.75.75 0 0 1 .75-.75h.006a.75.75 0 0 1 .75.75v.005a.75.75 0 0 1-.75.75h-.006a.75.75 0 0 1-.75-.75v-.005ZM14.25 16.494a.75.75 0 0 0-.75.75v.006c0 .414.335.75.75.75h.005a.75.75 0 0 0 .75-.75v-.006a.75.75 0 0 0-.75-.75h-.005ZM15.75 14.995a.75.75 0 0 1 .75-.75h.005a.75.75 0 0 1 .75.75v.006a.75.75 0 0 1-.75.75H16.5a.75.75 0 0 1-.75-.75v-.006ZM13.498 12.743a.75.75 0 0 1 .75-.75h2.25a.75.75 0 1 1 0 1.5h-2.25a.75.75 0 0 1-.75-.75ZM6.748 14.993a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Z" />
+                                <path fill-rule="evenodd"
+                                    d="M18 2.993a.75.75 0 0 0-1.5 0v1.5h-9V2.994a.75.75 0 1 0-1.5 0v1.497h-.752a3 3 0 0 0-3 3v11.252a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V7.492a3 3 0 0 0-3-3H18V2.993ZM3.748 18.743v-7.5a1.5 1.5 0 0 1 1.5-1.5h13.5a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5h-13.5a1.5 1.5 0 0 1-1.5-1.5Z"
+                                    clip-rule="evenodd" />
+                            </svg>
                             <div class="text-truncate" data-i18n="Tables">Daftar Janji Temu</div>
                         </a>
                     </li>
@@ -165,7 +207,10 @@
                     {{-- Daftar Obat --}}
                     <li class="menu-item {{ Request::is('obat') ? 'active open' : '' }}">
                         <a href="/obat" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-capsule"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="menu-icon size-6">
+                                <path fill-rule="evenodd" d="M10.5 3.798v5.02a3 3 0 0 1-.879 2.121l-2.377 2.377a9.845 9.845 0 0 1 5.091 1.013 8.315 8.315 0 0 0 5.713.636l.285-.071-3.954-3.955a3 3 0 0 1-.879-2.121v-5.02a23.614 23.614 0 0 0-3 0Zm4.5.138a.75.75 0 0 0 .093-1.495A24.837 24.837 0 0 0 12 2.25a25.048 25.048 0 0 0-3.093.191A.75.75 0 0 0 9 3.936v4.882a1.5 1.5 0 0 1-.44 1.06l-6.293 6.294c-1.62 1.621-.903 4.475 1.471 4.88 2.686.46 5.447.698 8.262.698 2.816 0 5.576-.239 8.262-.697 2.373-.406 3.092-3.26 1.47-4.881L15.44 9.879A1.5 1.5 0 0 1 15 8.818V3.936Z" clip-rule="evenodd" />
+                              </svg>
+                              
                             <div class="text-truncate" data-i18n="Support">Daftar Obat</div>
                         </a>
                     </li>
@@ -173,7 +218,11 @@
                     {{-- Stok Obat --}}
                     <li class="menu-item {{ Request::is('obat/stok') ? 'active open' : '' }}">
                         <a href="/obat/stok" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-box"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="menu-icon size-6">
+                                <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
+                                <path fill-rule="evenodd" d="m3.087 9 .54 9.176A3 3 0 0 0 6.62 21h10.757a3 3 0 0 0 2.995-2.824L20.913 9H3.087Zm6.163 3.75A.75.75 0 0 1 10 12h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                              </svg>
+                              
                             <div class="text-truncate" data-i18n="Documentation">Stok Obat</div>
                         </a>
                     </li>
@@ -184,7 +233,11 @@
                     {{-- Pembayaran --}}
                     <li class="menu-item {{ Request::is('laporan-pasien/create') ? 'active open' : '' }}">
                         <a href="/laporan-pasien/create" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-user-rectangle"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="menu-icon size-6">
+                                <path fill-rule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z" clip-rule="evenodd" />
+                                <path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z" />
+                              </svg>
+                              
                             <div class="text-truncate" data-i18n="Documentation">Data Pasien</div>
                         </a>
                     </li>
@@ -192,7 +245,11 @@
                     {{-- Tagihan --}}
                     <li class="menu-item {{ Request::is('laporan-daftar/create') ? 'active open' : '' }}">
                         <a href="/laporan-daftar/create" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-report"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="menu-icon size-6">
+                                <path fill-rule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875ZM12.75 12a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V18a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V12Z" clip-rule="evenodd" />
+                                <path d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z" />
+                              </svg>
+                              
                             <div class="text-truncate" data-i18n="Documentation">Data Pendaftaran</div>
                         </a>
                     </li>
@@ -227,33 +284,32 @@
                         <div class="navbar-nav align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Berkah Jaya</a></li>
 
                                     <!-- Breadcrumb utama -->
                                     {{-- Pasien --}}
-                                    @if (Route::is('pasien.index', 'pasien.create', 'pasien.show',
-                                                    'daftar.index','daftar.create','daftar.show'))
+                                    @if (Route::is('pasien.index', 'pasien.create', 'pasien.show', 'daftar.index', 'daftar.create', 'daftar.show'))
                                         <li class="breadcrumb-item"><a href="{{ route('pasien.index') }}">Pasien</a>
                                         </li>
-                                        
-                                    {{-- Dokter --}}
+
+                                        {{-- Dokter --}}
                                     @elseif (Route::is('dokter.index', 'dokter.create'))
                                         <li class="breadcrumb-item"><a href="{{ route('dokter.index') }}">Dokter</a>
                                         </li>
 
-                                    {{-- Obat --}}
+                                        {{-- Obat --}}
                                     @elseif (Route::is('obat.index'))
                                         <li class="breadcrumb-item"><a href="{{ route('obat.index') }}">Obat</a>
                                         </li>
-                                    
-                                    {{-- Janji Temu --}}
+
+                                        {{-- Janji Temu --}}
                                     @elseif (Route::is('janji-temu.index'))
-                                        <li class="breadcrumb-item"><a href="{{ route('janji-temu.index') }}">Janji Temu</a>
+                                        <li class="breadcrumb-item"><a href="{{ route('janji-temu.index') }}">Janji
+                                                Temu</a>
                                         </li>
 
-                                    {{-- Laporan --}}
-                                    @elseif (Route::is('laporan-pasien.index','laporan-pasien.create',
-                                                        'laporan-daftar.index','laporan-daftar.create'))
+                                        {{-- Laporan --}}
+                                    @elseif (Route::is('laporan-pasien.index', 'laporan-pasien.create', 'laporan-daftar.index', 'laporan-daftar.create'))
                                         <li class="breadcrumb-item"><a
                                                 href="{{ route('laporan-pasien.index') }}">Laporan</a>
                                         </li>
@@ -268,15 +324,20 @@
                             </nav>
                         </div>
 
-
+                        
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <div class="navbar-nav align-items-center me-6 mb-3">
+                                <div class="nav-item d-flex align-items-center">
+                                  @yield('search')
+                                </div>
+                              </div>
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        <img src="../assets/img/avatars/1.png" alt
+                                        <img src="/storage/avatar-male-1.jpg" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
@@ -286,7 +347,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="../assets/img/avatars/1.png" alt
+                                                        <img src="/storage/avatar-male-1.jpg" alt
                                                             class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
@@ -338,6 +399,7 @@
 
                     <!-- Content -->
                     @yield('content')
+                    @yield('scripts')
                     <!-- / Content -->
 
                     <!-- Footer -->

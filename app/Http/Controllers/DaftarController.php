@@ -11,7 +11,7 @@ class DaftarController extends Controller
 {
     public function index()
     {
-        $daftar = \App\Models\Daftar::with('Pasien')->latest()->paginate(6);
+        $daftar = Daftar::with('Pasien')->latest()->paginate(6);
         return view('daftar.index', compact('daftar'));
     }
 
@@ -19,6 +19,7 @@ class DaftarController extends Controller
     {
         $data['listPasien'] = \App\Models\Pasien::orderBy('nama', 'asc') -> get();
         $data['listPoli'] = \App\Models\Poli::orderBy('nama', 'asc') -> get();
+        $data['listDokter'] = \App\Models\Dokter::orderBy('nama', 'asc') -> get();
         return view('daftar.create', $data);
     }
 
@@ -29,9 +30,10 @@ class DaftarController extends Controller
             'pasien_id' => 'required',
             'poli_id' => 'required',
             'keluhan' => 'required',
+            'dokter_id' => 'required',
         ]);
 
-        $daftar = new \App\Models\Daftar();
+        $daftar = new Daftar();
         $daftar -> fill($requestData);
         $daftar -> save();
         flash('Berhasil, Data Pendaftaran Pasien Disimpan!')->success();
@@ -40,7 +42,7 @@ class DaftarController extends Controller
 
     public function show($id)
     {
-        $data['daftar'] = \App\Models\Daftar::findOrFail($id);
+        $data['daftar'] = Daftar::findOrFail($id);
         return view('daftar.show', $data);
     }
 
@@ -56,7 +58,7 @@ class DaftarController extends Controller
             'diagnosis'=> 'required',
         ]);
 
-        $daftar = \App\Models\Daftar::findOrFail($id);
+        $daftar = Daftar::findOrFail($id);
         $daftar -> fill($requestData);
         $daftar -> save();
         flash('Berhasil, Data Pendaftaran Pasien Diupdate!')->info();

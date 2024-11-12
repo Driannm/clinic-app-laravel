@@ -17,7 +17,7 @@ class DokterController extends Controller
             ->paginate(6) :
             Dokter::latest()->paginate(6); // Menggunakan data terbaru jika tidak ada query
             
-        $data['dokter'] = \App\Models\Dokter::latest() -> paginate(6);
+        $data['dokter'] = Dokter::latest() -> paginate(6);
         return view('dokter.index', [
             'dokter' => $dokter,
             'title' => 'Daftar Pasien',
@@ -49,7 +49,7 @@ class DokterController extends Controller
 
         
         $filePath = public_path('uploads');
-        $dokter = new \App\Models\Dokter();
+        $dokter = new Dokter();
         $dokter -> fill($requestData);
 
         
@@ -80,7 +80,7 @@ class DokterController extends Controller
             'alamat' => 'nullable',
         ]);
 
-        $dokter = \App\Models\Dokter::findOrFail($id);
+        $dokter = Dokter::findOrFail($id);
         $dokter->fill($requestData);
 
         // Jika ada file foto yang diupload
@@ -109,19 +109,19 @@ class DokterController extends Controller
     
     public function show(string $id)
     {
-        $data['dokter'] = \App\Models\Dokter::findOrFail($id);
+        $data['dokter'] = Dokter::findOrFail($id);
         return view('dokter.edit', $data);
     }
     
     public function jadwal()
     {
-        $dokter = \App\Models\Dokter::latest()->paginate(6);
+        $dokter = Dokter::latest()->paginate(6);
         return view('dokter.jadwal', compact('dokter'));
     }
 
     public function destroy(string $id)
     {
-        $dokter = \App\Models\Dokter::findOrFail($id);
+        $dokter = Dokter::findOrFail($id);
 
         if (!is_null($dokter->foto)) {
             $oldImage = public_path('uploads/' . $dokter->foto);

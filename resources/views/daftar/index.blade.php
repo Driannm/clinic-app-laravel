@@ -16,14 +16,9 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0 fw-semibold">DATA PENDAFTARAN PASIEN</h5>
+                <a href="/daftar/create" class="btn btn-sm btn-primary">Tambah Pendaftaran</a>
             </div>
             <div class="card-body">
-                <div class="row mb-3">
-                    <div class="col-md-12 d-flex justify-content-between">
-                        {{-- Button --}}
-                        <a href="/daftar/create" class="btn btn-primary btn-sm">Tambah Data</a>
-                    </div>
-                </div>
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible" role="alert">
                         {{ session('success') }}

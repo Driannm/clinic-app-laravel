@@ -18,7 +18,7 @@ class PasienController extends Controller
             ->orWhere('no_pasien', 'like', "%{$query}%")
             ->paginate(6) :
             Pasien::latest()->paginate(6); // Menggunakan data terbaru jika tidak ada query
-            $data['pasien'] = \App\Models\Pasien::latest()->paginate(6);
+            $data['pasien'] = Pasien::latest()->paginate(6);
         return view('pasien.index', [
             'pasien' => $pasien,
             'title' => 'Daftar Pasien',
@@ -43,7 +43,7 @@ class PasienController extends Controller
 
 
         $filePath = public_path('uploads');
-        $pasien = new \App\Models\Pasien();
+        $pasien = new Pasien();
         $pasien->fill($requestData);
 
 
@@ -62,7 +62,7 @@ class PasienController extends Controller
 
     public function show(string $id)
     {
-        $data['pasien'] = \App\Models\Pasien::findOrFail($id);
+        $data['pasien'] = Pasien::findOrFail($id);
         return view('pasien.edit', $data);
     }
 
@@ -79,7 +79,7 @@ class PasienController extends Controller
             'alamat' => 'nullable',
         ]);
 
-        $pasien = \App\Models\Pasien::findOrFail($id);
+        $pasien = Pasien::findOrFail($id);
         $pasien->fill($requestData);
 
         // Jika ada file foto yang diupload
@@ -108,7 +108,7 @@ class PasienController extends Controller
 
     public function destroy(string $id)
     {
-        $pasien = \App\Models\Pasien::findOrFail($id);
+        $pasien = Pasien::findOrFail($id);
 
         if ($pasien->daftar->count() > 0) {
             flash('Gagal, Data ' . $pasien->nama . ' Tidak Dapat Dihapus, Karena Sudah Ada Data Pendaftaran')->error();

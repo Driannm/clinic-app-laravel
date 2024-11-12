@@ -20,4 +20,9 @@ class Daftar extends Model
     {
         return $this->belongsTo(Poli::class)->withDefault();
     }
+    
+    public function dokter() : BelongsTo 
+    {
+        return $this->belongsTo(Dokter::class)->withDefault();
+    }
 }

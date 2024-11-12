@@ -59,9 +59,10 @@
                                 <tr>
                                     <th>NO</th>
                                     <th>Tanggal Daftar</th>
+                                    <th>Nama Dokter</th>
                                     <th>Keluhan</th>
-                                    <th>diagnosis</th>
-                                    <th>tindakan</th>
+                                    <th>Diagnosis</th>
+                                    <th>Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,6 +70,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->tanggal_daftar }}</td>
+                                        <td>{{ $daftar->dokter->nama }}</td>
                                         <td>{{ $item->keluhan }}</td>
                                         <td>{{ $item->diagnosis }}</td>
                                         <td>{{ $item->tindakan }}</td>

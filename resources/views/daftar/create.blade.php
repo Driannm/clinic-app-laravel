@@ -23,6 +23,7 @@
                             value="{{ old('tanggal_daftar') ?? date('Y-m-d') }}">
                         <span class="text-danger">{{ $errors->first('tanggal_daftar') }}</span>
                     </div>
+                    
                     <div class="form-group mt-3">
                         <label for="pasien_id" class="form-label">Nama Pasien</label>
                         <select name="pasien_id" class="form-control select2">
@@ -35,6 +36,7 @@
                         </select>
                         <span class="text-danger">{{ $errors->first('pasien_id') }}</span>
                     </div>
+                    
                     {{-- Poli --}}
                     <div class="form-group mt-3">
                         <label for="poli_id" class="form-label">Poli</label>
@@ -48,12 +50,28 @@
                         </select>
                         <span class="text-danger">{{ $errors->first('poli') }}</span>
                     </div>
+
                     {{-- Keluhan --}}
                     <div class="form-group mt-3 mb-3">
                         <label for="keluhan" class="form-label">Keluhan</label>
                         <textarea name="keluhan" rows="2" class="form-control">{{ old('keluhan') }}</textarea>
                         <span class="text-danger">{{ $errors->first('keluhan') }}</span>
                     </div>
+
+                    {{-- Dokter --}}
+                    <div class="form-group mt-3 mb-3">
+                        <label for="dokter_id" class="form-label">Dokter</label>
+                        <select name="dokter_id" class="form-control select2">
+                            <option value="">-- Pilih Dokter --</option>
+                            @foreach ($listDokter as $item)
+                                <option value="{{ $item->id }}" @selected(old('dokter_id') == $item->id)>
+                                    {{ $item->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger">{{ $errors->first('poli') }}</span>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>

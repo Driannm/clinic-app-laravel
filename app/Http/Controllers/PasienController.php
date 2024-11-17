@@ -13,12 +13,19 @@ class PasienController extends Controller
     public function index(Request $request)
     {
         $query = $request->input('query');
+
         $pasien = $query ?
             Pasien::where('nama', 'like', "%{$query}%")
             ->orWhere('no_pasien', 'like', "%{$query}%")
             ->paginate(6) :
-            Pasien::latest()->paginate(6); // Menggunakan data terbaru jika tidak ada query
-            $data['pasien'] = Pasien::latest()->paginate(6);
+            Pasien::latest()->paginate(6);
+
+        $data['pasien'] = Pasien::latest()->paginate(6);
+
+        if (request()->wantsJson()) {
+            return response()->json($data);
+        }
+
         return view('pasien.index', [
             'pasien' => $pasien,
             'title' => 'Daftar Pasien',
@@ -131,12 +138,4 @@ class PasienController extends Controller
     {
         return Excel::download(new PasienExport, 'data_pasien.xlsx');
     }
-
-    //     public function search(Request $request)
-    //     {
-    //         $query = $request->input('query');
-    //         $posts = Pasien::search($query)->get();
-
-    //         return view('posts.index', compact('posts'));
-    //     }
 }

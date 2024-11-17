@@ -352,8 +352,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <h6 class="mb-0">Yuda Andrian</h6>
-                                                    <small class="text-muted">Admin</small>
+                                                    <h6 class="mb-0">{{Auth::user()->name}}</h6>
+                                                    <small class="text-muted">{{ucfirst(Auth::user()->akses)}}</small>
                                                 </div>
                                             </div>
                                         </a>

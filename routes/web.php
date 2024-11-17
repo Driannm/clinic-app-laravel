@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LaporanPasienController;
 use App\Http\Controllers\LaporanDaftarController;
 
@@ -24,6 +25,7 @@ Route::middleware([Authenticate::class]) -> group(function () {
     Route::resource('laporan-pasien', LaporanPasienController::class);
     Route::resource('laporan-daftar', LaporanDaftarController::class);
     Route::get('/jadwal', [DokterController::class, 'jadwal'])->name('dokter.jadwal');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 });
 
 Route::middleware(['auth']) -> group(function () {

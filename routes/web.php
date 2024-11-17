@@ -18,12 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware([Authenticate::class]) -> group(function () {
-    Route::resource('pasien', PasienController::class);
+    // Route::resource('pasien', PasienController::class);
     Route::resource('daftar', DaftarController::class);
     Route::resource('dokter', DokterController::class);
     Route::resource('laporan-pasien', LaporanPasienController::class);
     Route::resource('laporan-daftar', LaporanDaftarController::class);
     Route::get('/jadwal', [DokterController::class, 'jadwal'])->name('dokter.jadwal');
+});
+
+Route::middleware(['auth']) -> group(function () {
+    Route::resource('pasien', PasienController::class)->except('destroy');
+});
+
+Route::middleware(['auth', 'auth.admin']) -> group(function () {
+    Route::resource('pasien', PasienController::class)->only('destroy');
 });
 
 Route::post('/daftar/create', [DaftarController::class, 'store'])->name('daftar.store');

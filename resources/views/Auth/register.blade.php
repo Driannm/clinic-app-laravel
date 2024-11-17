@@ -86,6 +86,18 @@
                                 </div>
                             </div>
 
+                            <!-- Admin & Operator -->
+                            <div class="mb-6">
+                                <label class="form-label" for="akses">Akses</label>
+
+                                <div class="input-group input-group-merge">
+                                    <select name="akses" class="form-control">
+                                        <option value="admin">Admin</option>
+                                        <option value="operator">Operator</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <!-- S&K -->
                             <div class="my-8">
                                 <div class="form-check mb-0 ms-2">

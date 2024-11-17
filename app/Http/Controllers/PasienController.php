@@ -10,6 +10,11 @@ use Maatwebsite\Excel\Facades\Excel;
 class PasienController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth.admin')->only(['destroy']);
+    }
+
     public function index(Request $request)
     {
         $query = $request->input('query');
